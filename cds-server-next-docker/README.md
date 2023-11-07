@@ -3,7 +3,7 @@
 
 CDS フックは、ベンダーに依存しないリモート意思決定支援標準です。 このリポジトリは、CDS Hooks プロジェクトの仕様と Web サイトの両方として機能します。
 ## Get Started
-### [Docker仮想コンテナでのビルド方法](/docs/build_docker.md)
+### [Docker仮想コンテナでのビルド方法](./docs/build_docker.md)
 Docker仮想コンテナを使ってプロジェクトをビルドします。Dockerを利用する事で様々なOS上で安全にプロジェクトをビルドする事が可能です。
 
 ### [ローカル環境でのビルド方法](/docs/build_localhost.md)
