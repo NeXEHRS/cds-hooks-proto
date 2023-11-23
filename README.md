@@ -12,13 +12,13 @@
 	- [CDSサービスの追加方法](./cds-server-next-docker/docs/extention04.md)
 - API仕様書
 	- [共通仕様](./cds-server-next-docker/docs/api_000.md)
-	- */cds-service*
+	- /cds-service
 		- [/cds-service（Didcovery）](./cds-server-next-docker/docs/api_001.md)
 		- [/cds-service/static-patient-greeter（prefetchなし）](./cds-server-next-docker/docs/api_002.md)
 		- [/cds-service/static-patient-greeter（prefetchあり）](./cds-server-next-docker/docs/api_003.md)
-	- */order-select*
+	- /order-select
 		- [order-select/warfarin-nsaids-cds-select](./cds-server-next-docker/docs/api_004.md)
 		- [/order-select/digoxin-cyclosporine-cds-select](./cds-server-next-docker/docs/api_005.md)
-	- */order-sign*
+	- /order-sign
 		- [order-sign/warfarin-nsaids-cds-sign](./cds-server-next-docker/docs/api_005.md)
 		- [/order-sign/digoxin-cyclosporine-cds-sign](./cds-server-next-docker/docs/api_006.md)
