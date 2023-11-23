@@ -13,6 +13,7 @@ Postmanの利用を開始するには無料アカウントの登録が必要に�
 
 1. 「My Workspace」になっている事を確認。
 2. 「import」を選択しアーカイブにある「CDS-Hooks.postman_collection.json」を選択してサンプルリクエストを読み込む
+※sampleフォルダにjsonファイルがあります。
 3. サンプルの「cds-services」を選択(CDS-Discovery)
 4. 「Send」を送信すると、右下にCDSHOOKサーバからの応答が表示されます。
 
