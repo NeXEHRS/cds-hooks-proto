@@ -1,7 +1,7 @@
-# CDS-HOOKS-JP(NexTHERS-POC)
-このプロジェクトは「CDS Hooks(プロトタイプ版)実証」[NexTHERS](https://www.nexehrs-cpc.jp/)に関連する一部の実装検証モデルです。
+# CDS-HOOKS-SERVER(NexTHERS-POC)
+このプロジェクトは「CDS Hooks(プロトタイプ版)実証」[NexTHERS-POC](https://www.nexehrs-cpc.jp/)によるCDS実装検証モデルです。
 
-CDS フックは、ベンダーに依存しないリモート意思決定支援標準です。 このリポジトリは、CDS Hooks プロジェクトの仕様と Web サイトの両方として機能します。
+CDS Hookは、ベンダーに依存しないリモート意思決定支援標準です。 このリポジトリは、CDS Hooks プロジェクトの仕様と Web サイトの両方として機能します。
 ## Get Started
 ### [Docker仮想コンテナでのビルド方法](./docs/build_docker.md)
 Docker仮想コンテナを使ってプロジェクトをビルドします。Dockerを利用する事で様々なOS上で安全にプロジェクトをビルドする事が可能です。
@@ -9,6 +9,10 @@ Docker仮想コンテナを使ってプロジェクトをビルドします。Do
 ### [ローカル環境でのビルド方法](./docs/build_localhost.md)
 Dockerコンテナを利用せずにlocalhost上でプロジェクトをビルドする事も可能です。
 この場合、OSインスタンス上にはNode.js(V18) 動作環境が必要になります。
+
+### [接続テスト](./docs/build_test.md)
+ここでは[Postman](https://www.postman.com/)を利用した接続テスト方法を解説します。
+アーカイブに含まれるjsonサンプルを取込む事で接続テストが行えます。
 
 ## 基本仕様・機能概要
 ### [CDSサービスとDatabaseの管理](./docs/extention01.md)

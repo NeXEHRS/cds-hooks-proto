@@ -1,7 +1,7 @@
 ## CDSサービスからのFHIRリソースの取得
 CDS サービスは、CDS クライアントが要求する推奨事項を計算するために特定の FHIR リソースを必要とします。実際のパフォーマンスに問題がなければ、CDS クライアントはコンテキスト データ (現在のユーザー ID や患者 ID など) のみを渡す CDS サービスを起動でき、CDS サービスは CDS クライアントの FHIR API にアクセスするための承認を取得して、リソースを取得できます。
 
-<center><img src="img/database03-0001.png" width="70%%" ></center>
+<center><img src="img/database03-0001.png" width="70%" ></center>
 
 
 以下の例は、 id.static-patient-greeterに応答した場合のCDSサービスのサンプルです。

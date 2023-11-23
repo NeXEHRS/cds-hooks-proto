@@ -1,0 +1,338 @@
+{
+	"info": {
+		"_postman_id": "29f73f79-0d9f-4fff-9003-240c7c36b6cc",
+		"name": "CDS-Hooks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17997337",
+		"_collection_link": "https://grey-escape-718645.postman.co/workspace/CDS-Hook-JP(NexTHERS-POC)~c9daff6c-d9a3-4f61-b0ac-8772b658f008/collection/17997337-29f73f79-0d9f-4fff-9003-240c7c36b6cc?action=share&source=collection_link&creator=17997337"
+	},
+	"item": [
+		{
+			"name": "cds-services",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{serverAddress}}:3000/cds-service",
+					"protocol": "http",
+					"host": [
+						"{{serverAddress}}"
+					],
+					"port": "3000",
+					"path": [
+						"cds-service"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cds-services/patient-greeter",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n  \"hookInstance\" :  \"d1577c69-dfbe-44ad-ba6d-3e05e953b2ea\" ,\r\n  \"fhirServer\" :  \"https://hapi.fhir.org/baseR4/\" ,\r\n  \"hook\" :  \"patient-view\" ,\r\n  \"fhirAuthorization\" :  { \r\n    \"access_token\" :  \"some-opaque-fhir-access-token\" ,\r\n    \"token_type\" :  \"Bearer\" ,\r\n    \"expires_in\" :  300 ,\r\n    \"scope\" :  \"user/Patient.read user/Observation.read\" ,\r\n    \"subject\" :  \"cds-service4\" \r\n  }, \r\n  \"context\" :  { \r\n    \"userId\" :  \"医師/例\" ,\r\n    \"patientId\" :  \"592743\" ,\r\n    \"encounterId\" :  \"89284\" \r\n  },\r\n  \"prefetch\" :  { \r\n    \"patientToGreet\" :  {\r\n        \"resourceType\": \"Patient\",\r\n        \"id\": \"592743\",\r\n        \"meta\": {\r\n            \"versionId\": \"1\",\r\n            \"lastUpdated\": \"2020-01-27T20:34:01.283+00:00\",\r\n            \"source\": \"#FSlQM8Qokn6nKAmW\"\r\n        },\r\n        \"text\": {\r\n            \"status\": \"generated\",\r\n            \"div\": \"<div xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><div class=\\\"hapiHeaderText\\\">Bob <b>ALEXANDER </b></div><table class=\\\"hapiPropertyTable\\\"><tbody><tr><td>Date of birth</td><td><span>05 September 2017</span></td></tr></tbody></table></div>\"\r\n        },\r\n        \"name\": [\r\n            {\r\n                \"family\": \"Alexander\",\r\n                \"given\": [\r\n                    \"Bob\"\r\n                ]\r\n            }\r\n        ],\r\n        \"gender\": \"male\",\r\n        \"birthDate\": \"2017-09-05\",\r\n        \"active\": true\r\n    }\r\n  } \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{serverAddress}}:3000/cds-service/static-patient-greeter",
+					"protocol": "http",
+					"host": [
+						"{{serverAddress}}"
+					],
+					"port": "3000",
+					"path": [
+						"cds-service",
+						"static-patient-greeter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cds-services/patient-greeter2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n  \"hookInstance\" :  \"d1577c69-dfbe-44ad-ba6d-3e05e953b2ea\" ,\r\n  \"fhirServer\" :  \"https://hapi.fhir.org/baseR4/\" ,\r\n  \"hook\" :  \"patient-view\" ,\r\n  \"fhirAuthorization\" :  { \r\n    \"access_token\" :  \"some-opaque-fhir-access-token\" ,\r\n    \"token_type\" :  \"Bearer\" ,\r\n    \"expires_in\" :  300 ,\r\n    \"scope\" :  \"user/Patient.read user/Observation.read\" ,\r\n    \"subject\" :  \"cds-service\" \r\n  }, \r\n  \"context\" :  { \r\n    \"userId\" :  \"医師/例\" ,\r\n    \"patientId\" :  \"592738\" ,\r\n    \"encounterId\" :  \"89284\" \r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{serverAddress}}:3000/cds-service/static-patient-greeter",
+					"protocol": "http",
+					"host": [
+						"{{serverAddress}}"
+					],
+					"port": "3000",
+					"path": [
+						"cds-service",
+						"static-patient-greeter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API not implemented1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n  \"hookInstance\" :  \"d1577c69-dfbe-44ad-ba6d-3e05e953b2ea\" ,\r\n  \"fhirServer\" :  \"https://hapi.fhir.org/baseR4/\" ,\r\n  \"hook\" :  \"patient-view\" ,\r\n  \"fhirAuthorization\" :  { \r\n    \"access_token\" :  \"some-opaque-fhir-access-token\" ,\r\n    \"token_type\" :  \"Bearer\" ,\r\n    \"expires_in\" :  300 ,\r\n    \"scope\" :  \"user/Patient.read user/Observation.read\" ,\r\n    \"subject\" :  \"cds-service\" \r\n  }, \r\n  \"context\" :  { \r\n    \"userId\" :  \"医師/例\" ,\r\n    \"patientId\" :  \"592738\" ,\r\n    \"encounterId\" :  \"89284\" \r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{serverAddress}}:3000/medication-prescrib",
+					"protocol": "http",
+					"host": [
+						"{{serverAddress}}"
+					],
+					"port": "3000",
+					"path": [
+						"medication-prescrib"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API not implemented2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"hookInstance\": \"9d02e4d7-2d5b-492f-8f77-ce36dda0647d\",\r\n  \"fhirServer\": \"http://46.101.183.140:8080/baseDstu3\",\r\n  \"hook\": \"medication-prescrib\",\r\n  \"user\": \"Practitioner/example\",\r\n  \"applyCql\": \"true\",\r\n  \"context\": {\r\n    \"patientId\": \"Patient/patient-warfarin-nsaid-over65-prefetch\",\r\n    \"encounterId\": \"Encounter/encounter-warfarin-nsaid-context\",\r\n    \"medications\": {\r\n      \"resourceType\": \"Bundle\",\r\n      \"entry\": [\r\n        {\r\n          \"resourceType\": \"MedicationRequest\",\r\n          \"id\": \"medicationrequest-warfarin-nsaid-topicaldiclofenac-context\",\r\n          \"status\": \"active\",\r\n          \"intent\": \"order\",\r\n          \"category\": [\r\n            {\r\n              \"coding\": [\r\n                {\r\n                  \"code\": \"outpatient\"\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"medicationCodeableConcept\": {\r\n            \"coding\": [\r\n              {\r\n                \"system\": \"http://www.nlm.nih.gov/research/umls/rxnorm\",\r\n                \"code\": \"855635\",\r\n                \"display\": \"Diclofenac Sodium 0.01 MG/MG Topical Gel [Voltaren]\"\r\n              }\r\n            ]\r\n          },\r\n          \"subject\": {\r\n            \"reference\": \"Patient/warfarin-nsaid-over65-prefetch\"\r\n          },\r\n          \"context\": {\r\n            \"reference\": \"Encounter/warfarin-nsaid-prefetch\"\r\n          },\r\n          \"_authoredOn\": {\r\n            \"extension\": [\r\n              {\r\n                \"url\": \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                \"valueString\": \"Today()\"\r\n              }\r\n            ]\r\n          },\r\n          \"dosageInstruction\": [\r\n            {\r\n              \"timing\": {\r\n                \"repeat\": {\r\n                  \"frequency\": 1,\r\n                  \"period\": 1.0,\r\n                  \"periodUnit\": \"d\"\r\n                }\r\n              },\r\n              \"asNeededBoolean\": false\r\n            }\r\n          ],\r\n          \"dispenseRequest\": {\r\n            \"validityPeriod\": {\r\n              \"extension\": [\r\n                {\r\n                  \"url\": \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                  \"valueString\": \"FHIR.Period { start: FHIR.dateTime { value: Today() }, end: FHIR.dateTime { value: Today() } }\"\r\n                }\r\n              ]\r\n            },\r\n            \"numberOfRepeatsAllowed\": 1,\r\n            \"expectedSupplyDuration\": {\r\n              \"value\": 90.0,\r\n              \"unit\": \"d\"\r\n            }\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"prefetch\": {\r\n      \"item1\": {\r\n        \"response\": {\r\n          \"status\": \"200 OK\"\r\n        },\r\n        \"resource\": {\r\n          \"resourceType\": \"Bundle\",\r\n          \"entry\": [\r\n            {\r\n              \"resourceType\" : \"MedicationRequest\",\r\n              \"id\" : \"medicationrequest-warfarin-nsaid-warfarin-prefetch\",\r\n              \"status\" : \"active\",\r\n              \"intent\" : \"order\",\r\n              \"category\" : [\r\n                {\r\n                  \"coding\" : [\r\n                    {\r\n                      \"code\" : \"outpatient\"\r\n                    }\r\n                  ]\r\n                }\r\n              ],\r\n              \"medicationCodeableConcept\" : {\r\n                \"coding\" : [\r\n                  {\r\n                    \"system\" : \"http://www.nlm.nih.gov/research/umls/rxnorm\",\r\n                    \"code\" : \"855295\",\r\n                    \"display\" : \"Warfarin Sodium 10 MG\"\r\n                  }\r\n                ]\r\n              },\r\n              \"subject\" : {\r\n                \"reference\" : \"Patient/warfarin-nsaid-over65-prefetch\"\r\n              },\r\n              \"context\" : {\r\n                \"reference\" : \"Encounter/warfarin-nsaid-prefetch\"\r\n              },\r\n              \"_authoredOn\" : {\r\n                \"extension\" : [\r\n                  {\r\n                    \"url\" : \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                    \"valueString\" : \"Today() - 90 days\"\r\n                  }\r\n                ]\r\n              },\r\n              \"dosageInstruction\" : [\r\n                {\r\n                  \"timing\" : {\r\n                    \"repeat\" : {\r\n                      \"frequency\" : 1,\r\n                      \"period\" : 1.0,\r\n                      \"periodUnit\" : \"d\"\r\n                    }\r\n                  },\r\n                  \"asNeededBoolean\" : false\r\n                }\r\n              ],\r\n              \"dispenseRequest\" : {\r\n                \"validityPeriod\" : {\r\n                  \"extension\" : [\r\n                    {\r\n                      \"url\" : \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                      \"valueString\" : \"FHIR.Period { start: FHIR.dateTime { value: Today() - 90 days }, end: FHIR.dateTime { value: Today() } }\"\r\n                    }\r\n                  ]\r\n                },\r\n                \"numberOfRepeatsAllowed\" : 1,\r\n                \"expectedSupplyDuration\" : {\r\n                  \"value\" : 90,\r\n                  \"unit\" : \"d\"\r\n                }\r\n              }\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{serverAddress}}:3000/medication-prescrib/warfarin-nsaids-medication-prescribe",
+					"protocol": "http",
+					"host": [
+						"{{serverAddress}}"
+					],
+					"port": "3000",
+					"path": [
+						"medication-prescrib",
+						"warfarin-nsaids-medication-prescribe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "order-select",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{serverAddress}}:3000/order-select",
+					"protocol": "http",
+					"host": [
+						"{{serverAddress}}"
+					],
+					"port": "3000",
+					"path": [
+						"order-select"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "order-select/warfarin-nsaids#1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"hookInstance\": \"9d02e4d7-2d5b-492f-8f77-ce36dda0647d\",\r\n  \"fhirServer\": \"http://46.101.183.140:8080/baseDstu3\",\r\n  \"hook\": \"order-select\",\r\n  \"user\": \"Practitioner/example\",\r\n  \"applyCql\": \"true\",\r\n  \"context\": {\r\n    \"patientId\": \"Patient/patient-warfarin-nsaid-over65-prefetch\",\r\n    \"encounterId\": \"Encounter/encounter-warfarin-nsaid-context\",\r\n    \"medications\": {\r\n      \"resourceType\": \"Bundle\",\r\n      \"entry\": [\r\n        {\r\n          \"resourceType\": \"MedicationRequest\",\r\n          \"id\": \"medicationrequest-warfarin-nsaid-topicaldiclofenac-context\",\r\n          \"status\": \"active\",\r\n          \"intent\": \"order\",\r\n          \"category\": [\r\n            {\r\n              \"coding\": [\r\n                {\r\n                  \"code\": \"outpatient\"\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"medicationCodeableConcept\": {\r\n            \"coding\": [\r\n              {\r\n                \"system\": \"http://www.nlm.nih.gov/research/umls/rxnorm\",\r\n                \"code\": \"855635\",\r\n                \"display\": \"Diclofenac Sodium 0.01 MG/MG Topical Gel [Voltaren]\"\r\n              }\r\n            ]\r\n          },\r\n          \"subject\": {\r\n            \"reference\": \"Patient/warfarin-nsaid-over65-prefetch\"\r\n          },\r\n          \"context\": {\r\n            \"reference\": \"Encounter/warfarin-nsaid-prefetch\"\r\n          },\r\n          \"_authoredOn\": {\r\n            \"extension\": [\r\n              {\r\n                \"url\": \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                \"valueString\": \"Today()\"\r\n              }\r\n            ]\r\n          },\r\n          \"dosageInstruction\": [\r\n            {\r\n              \"timing\": {\r\n                \"repeat\": {\r\n                  \"frequency\": 1,\r\n                  \"period\": 1.0,\r\n                  \"periodUnit\": \"d\"\r\n                }\r\n              },\r\n              \"asNeededBoolean\": false\r\n            }\r\n          ],\r\n          \"dispenseRequest\": {\r\n            \"validityPeriod\": {\r\n              \"extension\": [\r\n                {\r\n                  \"url\": \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                  \"valueString\": \"FHIR.Period { start: FHIR.dateTime { value: Today() }, end: FHIR.dateTime { value: Today() } }\"\r\n                }\r\n              ]\r\n            },\r\n            \"numberOfRepeatsAllowed\": 1,\r\n            \"expectedSupplyDuration\": {\r\n              \"value\": 90.0,\r\n              \"unit\": \"d\"\r\n            }\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"prefetch\": {\r\n      \"item1\": {\r\n        \"response\": {\r\n          \"status\": \"200 OK\"\r\n        },\r\n        \"resource\": {\r\n          \"resourceType\": \"Bundle\",\r\n          \"entry\": [\r\n            {\r\n              \"resourceType\" : \"MedicationRequest\",\r\n              \"id\" : \"medicationrequest-warfarin-nsaid-warfarin-prefetch\",\r\n              \"status\" : \"active\",\r\n              \"intent\" : \"order\",\r\n              \"category\" : [\r\n                {\r\n                  \"coding\" : [\r\n                    {\r\n                      \"code\" : \"outpatient\"\r\n                    }\r\n                  ]\r\n                }\r\n              ],\r\n              \"medicationCodeableConcept\" : {\r\n                \"coding\" : [\r\n                  {\r\n                    \"system\" : \"http://www.nlm.nih.gov/research/umls/rxnorm\",\r\n                    \"code\" : \"855295\",\r\n                    \"display\" : \"Warfarin Sodium 10 MG\"\r\n                  }\r\n                ]\r\n              },\r\n              \"subject\" : {\r\n                \"reference\" : \"Patient/warfarin-nsaid-over65-prefetch\"\r\n              },\r\n              \"context\" : {\r\n                \"reference\" : \"Encounter/warfarin-nsaid-prefetch\"\r\n              },\r\n              \"_authoredOn\" : {\r\n                \"extension\" : [\r\n                  {\r\n                    \"url\" : \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                    \"valueString\" : \"Today() - 90 days\"\r\n                  }\r\n                ]\r\n              },\r\n              \"dosageInstruction\" : [\r\n                {\r\n                  \"timing\" : {\r\n                    \"repeat\" : {\r\n                      \"frequency\" : 1,\r\n                      \"period\" : 1.0,\r\n                      \"periodUnit\" : \"d\"\r\n                    }\r\n                  },\r\n                  \"asNeededBoolean\" : false\r\n                }\r\n              ],\r\n              \"dispenseRequest\" : {\r\n                \"validityPeriod\" : {\r\n                  \"extension\" : [\r\n                    {\r\n                      \"url\" : \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                      \"valueString\" : \"FHIR.Period { start: FHIR.dateTime { value: Today() - 90 days }, end: FHIR.dateTime { value: Today() } }\"\r\n                    }\r\n                  ]\r\n                },\r\n                \"numberOfRepeatsAllowed\" : 1,\r\n                \"expectedSupplyDuration\" : {\r\n                  \"value\" : 90,\r\n                  \"unit\" : \"d\"\r\n                }\r\n              }\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{serverAddress}}:3000/order-select/warfarin-nsaids-cds-select",
+					"protocol": "http",
+					"host": [
+						"{{serverAddress}}"
+					],
+					"port": "3000",
+					"path": [
+						"order-select",
+						"warfarin-nsaids-cds-select"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "order-select/digoxin-cyclosporine-cds-select Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"hookInstance\": \"9d02e4d7-2d5b-492f-8f77-ce36dda0647d\",\r\n  \"fhirServer\": \"http://46.101.183.140:8080/baseDstu3\",\r\n  \"hook\": \"order-select\",\r\n  \"user\": \"Practitioner/example\",\r\n  \"applyCql\": \"true\",\r\n  \"context\": {\r\n    \"patientId\": \"Patient/patient-warfarin-nsaid-over65-prefetch\",\r\n    \"encounterId\": \"Encounter/encounter-warfarin-nsaid-context\",\r\n    \"medications\": {\r\n      \"resourceType\": \"Bundle\",\r\n      \"entry\": [\r\n        {\r\n          \"resourceType\": \"MedicationRequest\",\r\n          \"id\": \"medicationrequest-warfarin-nsaid-topicaldiclofenac-context\",\r\n          \"status\": \"active\",\r\n          \"intent\": \"order\",\r\n          \"category\": [\r\n            {\r\n              \"coding\": [\r\n                {\r\n                  \"code\": \"outpatient\"\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"medicationCodeableConcept\": {\r\n            \"coding\": [\r\n              {\r\n                \"system\": \"http://www.nlm.nih.gov/research/umls/rxnorm\",\r\n                \"code\": \"855635\",\r\n                \"display\": \"Diclofenac Sodium 0.01 MG/MG Topical Gel [Voltaren]\"\r\n              }\r\n            ]\r\n          },\r\n          \"subject\": {\r\n            \"reference\": \"Patient/warfarin-nsaid-over65-prefetch\"\r\n          },\r\n          \"context\": {\r\n            \"reference\": \"Encounter/warfarin-nsaid-prefetch\"\r\n          },\r\n          \"_authoredOn\": {\r\n            \"extension\": [\r\n              {\r\n                \"url\": \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                \"valueString\": \"Today()\"\r\n              }\r\n            ]\r\n          },\r\n          \"dosageInstruction\": [\r\n            {\r\n              \"timing\": {\r\n                \"repeat\": {\r\n                  \"frequency\": 1,\r\n                  \"period\": 1.0,\r\n                  \"periodUnit\": \"d\"\r\n                }\r\n              },\r\n              \"asNeededBoolean\": false\r\n            }\r\n          ],\r\n          \"dispenseRequest\": {\r\n            \"validityPeriod\": {\r\n              \"extension\": [\r\n                {\r\n                  \"url\": \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                  \"valueString\": \"FHIR.Period { start: FHIR.dateTime { value: Today() }, end: FHIR.dateTime { value: Today() } }\"\r\n                }\r\n              ]\r\n            },\r\n            \"numberOfRepeatsAllowed\": 1,\r\n            \"expectedSupplyDuration\": {\r\n              \"value\": 90.0,\r\n              \"unit\": \"d\"\r\n            }\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"prefetch\": {\r\n      \"item1\": {\r\n        \"response\": {\r\n          \"status\": \"200 OK\"\r\n        },\r\n        \"resource\": {\r\n          \"resourceType\": \"Bundle\",\r\n          \"entry\": [\r\n            {\r\n              \"resourceType\" : \"MedicationRequest\",\r\n              \"id\" : \"medicationrequest-warfarin-nsaid-warfarin-prefetch\",\r\n              \"status\" : \"active\",\r\n              \"intent\" : \"order\",\r\n              \"category\" : [\r\n                {\r\n                  \"coding\" : [\r\n                    {\r\n                      \"code\" : \"outpatient\"\r\n                    }\r\n                  ]\r\n                }\r\n              ],\r\n              \"medicationCodeableConcept\" : {\r\n                \"coding\" : [\r\n                  {\r\n                    \"system\" : \"http://www.nlm.nih.gov/research/umls/rxnorm\",\r\n                    \"code\" : \"855295\",\r\n                    \"display\" : \"Warfarin Sodium 10 MG\"\r\n                  }\r\n                ]\r\n              },\r\n              \"subject\" : {\r\n                \"reference\" : \"Patient/warfarin-nsaid-over65-prefetch\"\r\n              },\r\n              \"context\" : {\r\n                \"reference\" : \"Encounter/warfarin-nsaid-prefetch\"\r\n              },\r\n              \"_authoredOn\" : {\r\n                \"extension\" : [\r\n                  {\r\n                    \"url\" : \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                    \"valueString\" : \"Today() - 90 days\"\r\n                  }\r\n                ]\r\n              },\r\n              \"dosageInstruction\" : [\r\n                {\r\n                  \"timing\" : {\r\n                    \"repeat\" : {\r\n                      \"frequency\" : 1,\r\n                      \"period\" : 1.0,\r\n                      \"periodUnit\" : \"d\"\r\n                    }\r\n                  },\r\n                  \"asNeededBoolean\" : false\r\n                }\r\n              ],\r\n              \"dispenseRequest\" : {\r\n                \"validityPeriod\" : {\r\n                  \"extension\" : [\r\n                    {\r\n                      \"url\" : \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                      \"valueString\" : \"FHIR.Period { start: FHIR.dateTime { value: Today() - 90 days }, end: FHIR.dateTime { value: Today() } }\"\r\n                    }\r\n                  ]\r\n                },\r\n                \"numberOfRepeatsAllowed\" : 1,\r\n                \"expectedSupplyDuration\" : {\r\n                  \"value\" : 90,\r\n                  \"unit\" : \"d\"\r\n                }\r\n              }\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{serverAddress}}:3000/order-select/digoxin-cyclosporine-cds-select",
+					"protocol": "http",
+					"host": [
+						"{{serverAddress}}"
+					],
+					"port": "3000",
+					"path": [
+						"order-select",
+						"digoxin-cyclosporine-cds-select"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "order-sign",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{serverAddress}}:3000/order-sign",
+					"protocol": "http",
+					"host": [
+						"{{serverAddress}}"
+					],
+					"port": "3000",
+					"path": [
+						"order-sign"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "order-sign/warfarin-nsaids#1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"hookInstance\": \"9d02e4d7-2d5b-492f-8f77-ce36dda0647d\",\r\n  \"fhirServer\": \"http://46.101.183.140:8080/baseDstu3\",\r\n  \"hook\": \"order-sign\",\r\n  \"user\": \"Practitioner/example\",\r\n  \"applyCql\": \"true\",\r\n  \"context\": {\r\n    \"patientId\": \"Patient/patient-warfarin-nsaid-over65-prefetch\",\r\n    \"encounterId\": \"Encounter/encounter-warfarin-nsaid-context\",\r\n    \"medications\": {\r\n      \"resourceType\": \"Bundle\",\r\n      \"entry\": [\r\n        {\r\n          \"resourceType\": \"MedicationRequest\",\r\n          \"id\": \"medicationrequest-warfarin-nsaid-topicaldiclofenac-context\",\r\n          \"status\": \"active\",\r\n          \"intent\": \"order\",\r\n          \"category\": [\r\n            {\r\n              \"coding\": [\r\n                {\r\n                  \"code\": \"outpatient\"\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"medicationCodeableConcept\": {\r\n            \"coding\": [\r\n              {\r\n                \"system\": \"http://www.nlm.nih.gov/research/umls/rxnorm\",\r\n                \"code\": \"855635\",\r\n                \"display\": \"Diclofenac Sodium 0.01 MG/MG Topical Gel [Voltaren]\"\r\n              }\r\n            ]\r\n          },\r\n          \"subject\": {\r\n            \"reference\": \"Patient/warfarin-nsaid-over65-prefetch\"\r\n          },\r\n          \"context\": {\r\n            \"reference\": \"Encounter/warfarin-nsaid-prefetch\"\r\n          },\r\n          \"_authoredOn\": {\r\n            \"extension\": [\r\n              {\r\n                \"url\": \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                \"valueString\": \"Today()\"\r\n              }\r\n            ]\r\n          },\r\n          \"dosageInstruction\": [\r\n            {\r\n              \"timing\": {\r\n                \"repeat\": {\r\n                  \"frequency\": 1,\r\n                  \"period\": 1.0,\r\n                  \"periodUnit\": \"d\"\r\n                }\r\n              },\r\n              \"asNeededBoolean\": false\r\n            }\r\n          ],\r\n          \"dispenseRequest\": {\r\n            \"validityPeriod\": {\r\n              \"extension\": [\r\n                {\r\n                  \"url\": \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                  \"valueString\": \"FHIR.Period { start: FHIR.dateTime { value: Today() }, end: FHIR.dateTime { value: Today() } }\"\r\n                }\r\n              ]\r\n            },\r\n            \"numberOfRepeatsAllowed\": 1,\r\n            \"expectedSupplyDuration\": {\r\n              \"value\": 90.0,\r\n              \"unit\": \"d\"\r\n            }\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"prefetch\": {\r\n      \"item1\": {\r\n        \"response\": {\r\n          \"status\": \"200 OK\"\r\n        },\r\n        \"resource\": {\r\n          \"resourceType\": \"Bundle\",\r\n          \"entry\": [\r\n            {\r\n              \"resourceType\" : \"MedicationRequest\",\r\n              \"id\" : \"medicationrequest-warfarin-nsaid-warfarin-prefetch\",\r\n              \"status\" : \"active\",\r\n              \"intent\" : \"order\",\r\n              \"category\" : [\r\n                {\r\n                  \"coding\" : [\r\n                    {\r\n                      \"code\" : \"outpatient\"\r\n                    }\r\n                  ]\r\n                }\r\n              ],\r\n              \"medicationCodeableConcept\" : {\r\n                \"coding\" : [\r\n                  {\r\n                    \"system\" : \"http://www.nlm.nih.gov/research/umls/rxnorm\",\r\n                    \"code\" : \"855295\",\r\n                    \"display\" : \"Warfarin Sodium 10 MG\"\r\n                  }\r\n                ]\r\n              },\r\n              \"subject\" : {\r\n                \"reference\" : \"Patient/warfarin-nsaid-over65-prefetch\"\r\n              },\r\n              \"context\" : {\r\n                \"reference\" : \"Encounter/warfarin-nsaid-prefetch\"\r\n              },\r\n              \"_authoredOn\" : {\r\n                \"extension\" : [\r\n                  {\r\n                    \"url\" : \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                    \"valueString\" : \"Today() - 90 days\"\r\n                  }\r\n                ]\r\n              },\r\n              \"dosageInstruction\" : [\r\n                {\r\n                  \"timing\" : {\r\n                    \"repeat\" : {\r\n                      \"frequency\" : 1,\r\n                      \"period\" : 1.0,\r\n                      \"periodUnit\" : \"d\"\r\n                    }\r\n                  },\r\n                  \"asNeededBoolean\" : false\r\n                }\r\n              ],\r\n              \"dispenseRequest\" : {\r\n                \"validityPeriod\" : {\r\n                  \"extension\" : [\r\n                    {\r\n                      \"url\" : \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                      \"valueString\" : \"FHIR.Period { start: FHIR.dateTime { value: Today() - 90 days }, end: FHIR.dateTime { value: Today() } }\"\r\n                    }\r\n                  ]\r\n                },\r\n                \"numberOfRepeatsAllowed\" : 1,\r\n                \"expectedSupplyDuration\" : {\r\n                  \"value\" : 90,\r\n                  \"unit\" : \"d\"\r\n                }\r\n              }\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    }\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{serverAddress}}:3000/order-sign/warfarin-nsaids-cds-sign",
+					"protocol": "http",
+					"host": [
+						"{{serverAddress}}"
+					],
+					"port": "3000",
+					"path": [
+						"order-sign",
+						"warfarin-nsaids-cds-sign"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "order-sign/digoxin-cyclosporine",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"hookInstance\": \"9d02e4d7-2d5b-492f-8f77-ce36dda0647d\",\r\n  \"fhirServer\": \"http://46.101.183.140:8080/baseDstu3\",\r\n  \"hook\": \"order-sign\",\r\n  \"user\": \"Practitioner/example\",\r\n  \"applyCql\": \"true\",\r\n  \"context\": {\r\n    \"patientId\": \"Patient/patient-warfarin-nsaid-over65-prefetch\",\r\n    \"encounterId\": \"Encounter/encounter-warfarin-nsaid-context\",\r\n    \"medications\": {\r\n      \"resourceType\": \"Bundle\",\r\n      \"entry\": [\r\n        {\r\n          \"resourceType\": \"MedicationRequest\",\r\n          \"id\": \"medicationrequest-warfarin-nsaid-topicaldiclofenac-context\",\r\n          \"status\": \"active\",\r\n          \"intent\": \"order\",\r\n          \"category\": [\r\n            {\r\n              \"coding\": [\r\n                {\r\n                  \"code\": \"outpatient\"\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"medicationCodeableConcept\": {\r\n            \"coding\": [\r\n              {\r\n                \"system\": \"http://www.nlm.nih.gov/research/umls/rxnorm\",\r\n                \"code\": \"855635\",\r\n                \"display\": \"Diclofenac Sodium 0.01 MG/MG Topical Gel [Voltaren]\"\r\n              }\r\n            ]\r\n          },\r\n          \"subject\": {\r\n            \"reference\": \"Patient/warfarin-nsaid-over65-prefetch\"\r\n          },\r\n          \"context\": {\r\n            \"reference\": \"Encounter/warfarin-nsaid-prefetch\"\r\n          },\r\n          \"_authoredOn\": {\r\n            \"extension\": [\r\n              {\r\n                \"url\": \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                \"valueString\": \"Today()\"\r\n              }\r\n            ]\r\n          },\r\n          \"dosageInstruction\": [\r\n            {\r\n              \"timing\": {\r\n                \"repeat\": {\r\n                  \"frequency\": 1,\r\n                  \"period\": 1.0,\r\n                  \"periodUnit\": \"d\"\r\n                }\r\n              },\r\n              \"asNeededBoolean\": false\r\n            }\r\n          ],\r\n          \"dispenseRequest\": {\r\n            \"validityPeriod\": {\r\n              \"extension\": [\r\n                {\r\n                  \"url\": \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                  \"valueString\": \"FHIR.Period { start: FHIR.dateTime { value: Today() }, end: FHIR.dateTime { value: Today() } }\"\r\n                }\r\n              ]\r\n            },\r\n            \"numberOfRepeatsAllowed\": 1,\r\n            \"expectedSupplyDuration\": {\r\n              \"value\": 90.0,\r\n              \"unit\": \"d\"\r\n            }\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"prefetch\": {\r\n      \"item1\": {\r\n        \"response\": {\r\n          \"status\": \"200 OK\"\r\n        },\r\n        \"resource\": {\r\n          \"resourceType\": \"Bundle\",\r\n          \"entry\": [\r\n            {\r\n              \"resourceType\" : \"MedicationRequest\",\r\n              \"id\" : \"medicationrequest-warfarin-nsaid-warfarin-prefetch\",\r\n              \"status\" : \"active\",\r\n              \"intent\" : \"order\",\r\n              \"category\" : [\r\n                {\r\n                  \"coding\" : [\r\n                    {\r\n                      \"code\" : \"outpatient\"\r\n                    }\r\n                  ]\r\n                }\r\n              ],\r\n              \"medicationCodeableConcept\" : {\r\n                \"coding\" : [\r\n                  {\r\n                    \"system\" : \"http://www.nlm.nih.gov/research/umls/rxnorm\",\r\n                    \"code\" : \"855295\",\r\n                    \"display\" : \"Warfarin Sodium 10 MG\"\r\n                  }\r\n                ]\r\n              },\r\n              \"subject\" : {\r\n                \"reference\" : \"Patient/warfarin-nsaid-over65-prefetch\"\r\n              },\r\n              \"context\" : {\r\n                \"reference\" : \"Encounter/warfarin-nsaid-prefetch\"\r\n              },\r\n              \"_authoredOn\" : {\r\n                \"extension\" : [\r\n                  {\r\n                    \"url\" : \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                    \"valueString\" : \"Today() - 90 days\"\r\n                  }\r\n                ]\r\n              },\r\n              \"dosageInstruction\" : [\r\n                {\r\n                  \"timing\" : {\r\n                    \"repeat\" : {\r\n                      \"frequency\" : 1,\r\n                      \"period\" : 1.0,\r\n                      \"periodUnit\" : \"d\"\r\n                    }\r\n                  },\r\n                  \"asNeededBoolean\" : false\r\n                }\r\n              ],\r\n              \"dispenseRequest\" : {\r\n                \"validityPeriod\" : {\r\n                  \"extension\" : [\r\n                    {\r\n                      \"url\" : \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                      \"valueString\" : \"FHIR.Period { start: FHIR.dateTime { value: Today() - 90 days }, end: FHIR.dateTime { value: Today() } }\"\r\n                    }\r\n                  ]\r\n                },\r\n                \"numberOfRepeatsAllowed\" : 1,\r\n                \"expectedSupplyDuration\" : {\r\n                  \"value\" : 90,\r\n                  \"unit\" : \"d\"\r\n                }\r\n              }\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    }\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{serverAddress}}:3000/order-sign/digoxin-cyclosporine-cds-sign",
+					"protocol": "http",
+					"host": [
+						"{{serverAddress}}"
+					],
+					"port": "3000",
+					"path": [
+						"order-sign",
+						"digoxin-cyclosporine-cds-sign"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "order-sign/digoxin-cyclosporine Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"hookInstance\": \"9d02e4d7-2d5b-492f-8f77-ce36dda0647d\",\r\n  \"fhirServer\": \"http://46.101.183.140:8080/baseDstu3\",\r\n  \"hook\": \"order-sign\",\r\n  \"user\": \"Practitioner/example\",\r\n  \"applyCql\": \"true\",\r\n  \"context\": {\r\n    \"patientId\": \"Patient/patient-warfarin-nsaid-over65-prefetch\",\r\n    \"encounterId\": \"Encounter/encounter-warfarin-nsaid-context\",\r\n    \"medications\": {\r\n      \"resourceType\": \"Bundle\",\r\n      \"entry\": [\r\n        {\r\n          \"resourceType\": \"MedicationRequest\",\r\n          \"id\": \"medicationrequest-warfarin-nsaid-topicaldiclofenac-context\",\r\n          \"status\": \"active\",\r\n          \"intent\": \"order\",\r\n          \"category\": [\r\n            {\r\n              \"coding\": [\r\n                {\r\n                  \"code\": \"outpatient\"\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"medicationCodeableConcept\": {\r\n            \"coding\": [\r\n              {\r\n                \"system\": \"http://www.nlm.nih.gov/research/umls/rxnorm\",\r\n                \"code\": \"855635\",\r\n                \"display\": \"Diclofenac Sodium 0.01 MG/MG Topical Gel [Voltaren]\"\r\n              }\r\n            ]\r\n          },\r\n          \"subject\": {\r\n            \"reference\": \"Patient/warfarin-nsaid-over65-prefetch\"\r\n          },\r\n          \"context\": {\r\n            \"reference\": \"Encounter/warfarin-nsaid-prefetch\"\r\n          },\r\n          \"_authoredOn\": {\r\n            \"extension\": [\r\n              {\r\n                \"url\": \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                \"valueString\": \"Today()\"\r\n              }\r\n            ]\r\n          },\r\n          \"dosageInstruction\": [\r\n            {\r\n              \"timing\": {\r\n                \"repeat\": {\r\n                  \"frequency\": 1,\r\n                  \"period\": 1.0,\r\n                  \"periodUnit\": \"d\"\r\n                }\r\n              },\r\n              \"asNeededBoolean\": false\r\n            }\r\n          ],\r\n          \"dispenseRequest\": {\r\n            \"validityPeriod\": {\r\n              \"extension\": [\r\n                {\r\n                  \"url\": \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                  \"valueString\": \"FHIR.Period { start: FHIR.dateTime { value: Today() }, end: FHIR.dateTime { value: Today() } }\"\r\n                }\r\n              ]\r\n            },\r\n            \"numberOfRepeatsAllowed\": 1,\r\n            \"expectedSupplyDuration\": {\r\n              \"value\": 90.0,\r\n              \"unit\": \"d\"\r\n            }\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"prefetch\": {\r\n      \"item1\": {\r\n        \"response\": {\r\n          \"status\": \"200 OK\"\r\n        },\r\n        \"resource\": {\r\n          \"resourceType\": \"Bundle\",\r\n          \"entry\": [\r\n            {\r\n              \"resourceType\" : \"MedicationRequest\",\r\n              \"id\" : \"medicationrequest-warfarin-nsaid-warfarin-prefetch\",\r\n              \"status\" : \"active\",\r\n              \"intent\" : \"order\",\r\n              \"category\" : [\r\n                {\r\n                  \"coding\" : [\r\n                    {\r\n                      \"code\" : \"outpatient\"\r\n                    }\r\n                  ]\r\n                }\r\n              ],\r\n              \"medicationCodeableConcept\" : {\r\n                \"coding\" : [\r\n                  {\r\n                    \"system\" : \"http://www.nlm.nih.gov/research/umls/rxnorm\",\r\n                    \"code\" : \"855295\",\r\n                    \"display\" : \"Warfarin Sodium 10 MG\"\r\n                  }\r\n                ]\r\n              },\r\n              \"subject\" : {\r\n                \"reference\" : \"Patient/warfarin-nsaid-over65-prefetch\"\r\n              },\r\n              \"context\" : {\r\n                \"reference\" : \"Encounter/warfarin-nsaid-prefetch\"\r\n              },\r\n              \"_authoredOn\" : {\r\n                \"extension\" : [\r\n                  {\r\n                    \"url\" : \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                    \"valueString\" : \"Today() - 90 days\"\r\n                  }\r\n                ]\r\n              },\r\n              \"dosageInstruction\" : [\r\n                {\r\n                  \"timing\" : {\r\n                    \"repeat\" : {\r\n                      \"frequency\" : 1,\r\n                      \"period\" : 1.0,\r\n                      \"periodUnit\" : \"d\"\r\n                    }\r\n                  },\r\n                  \"asNeededBoolean\" : false\r\n                }\r\n              ],\r\n              \"dispenseRequest\" : {\r\n                \"validityPeriod\" : {\r\n                  \"extension\" : [\r\n                    {\r\n                      \"url\" : \"http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression\",\r\n                      \"valueString\" : \"FHIR.Period { start: FHIR.dateTime { value: Today() - 90 days }, end: FHIR.dateTime { value: Today() } }\"\r\n                    }\r\n                  ]\r\n                },\r\n                \"numberOfRepeatsAllowed\" : 1,\r\n                \"expectedSupplyDuration\" : {\r\n                  \"value\" : 90,\r\n                  \"unit\" : \"d\"\r\n                }\r\n              }\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    }\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{serverAddress}}:3000/demo-hook/process-test",
+					"protocol": "http",
+					"host": [
+						"{{serverAddress}}"
+					],
+					"port": "3000",
+					"path": [
+						"demo-hook",
+						"process-test"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
