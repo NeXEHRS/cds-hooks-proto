@@ -13,7 +13,7 @@
 - API仕様書
 	- [共通仕様](./cds-server-next-docker/docs/api_000.md)
 	- /cds-service
-	- [/cds-service（Didcovery）](./docs/api_001.md)
+	- [/cds-service（Didcovery）](./cds-server-next-docker/docs/api_001.md)
 		- [/cds-service/static-patient-greeter（prefetchなし）](./cds-server-next-docker/docs/api_002.md)
 		- [/cds-service/static-patient-greeter（prefetchあり）](./cds-server-next-docker/docs/api_003.md)
 	- /order-select
