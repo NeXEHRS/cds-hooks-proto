@@ -14,7 +14,8 @@ CDSルール実行エンジンは本CDSHOOKサーバ内のサービスを登録�
 | http://2.2.2.2:8888 | **** | **** |
 
 
-CDSサービスのうち「**warfarin-nsaids-cds-select**」サービスを「**http://1.1.1.1:3000**」ホストにリレーする場合はこのように登録します。
+CDSサービスのうち「**warfarin-nsaids-cds-select**」サービスを他のホストにリレーする場合は**Service#cdshost**カラムに**Cdshost**を１つだけ登録します。
+（登録が無い場合はすべて自サーバ内での処理となります。）
 
 <center><img src="img/extention05-001.png" width="10100%" ></center>
 
