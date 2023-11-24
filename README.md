@@ -4,7 +4,7 @@
 - CDSHOOKサーバの開始方法
 	- [Docker仮想コンテナでのビルド方法](./cds-server-next-docker/docs/build_docker.md)
 	- [ローカル環境でのビルド方法](./cds-server-next-docker/docs/build_localhost.md)
-	- [接続テスト](./docs/build_test.md)
+	- [接続テスト方法](./cds-server-next-docker/docs/build_test.md)
 - 基本仕様・機能概要
 	- [CDSサービスとDatabaseの管理](./cds-server-next-docker/docs/extention01.md)
 	- [Discovary(/cds-selecctの例)](./cds-server-next-docker/docs/extention02.md)
