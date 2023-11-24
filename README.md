@@ -10,6 +10,7 @@
 	- [Discovary(/cds-selecctの例)](./cds-server-next-docker/docs/extention02.md)
 	- [CDSサービスからのFHIRリソースの取得](./docs/extention03.md)
 	- [CDSサービスの追加方法](./cds-server-next-docker/docs/extention04.md)
+	- [他ホスト（CDS実行エンジン）へのリレー方法](./cds-server-next-docker/docs/extention05.md)
 - API仕様書
 	- [共通仕様](./cds-server-next-docker/docs/api_000.md)
 	- /cds-service
