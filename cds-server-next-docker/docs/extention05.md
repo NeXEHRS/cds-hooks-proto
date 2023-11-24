@@ -19,9 +19,7 @@ CDSサービスのうち「**warfarin-nsaids-cds-select**」サービスを他�
 
 <center><img src="img/extention05-001.png" width="10100%" ></center>
 
-この設定によりCDSHOOKサーバは、クライアントから受け取ったCDSリクエストのうち「**warfarin-nsaids-cds-select**」サービスに関しては、全てのリクエスト内容を「**http://1.1.1.1:3000**」にリレーしCardの返却を待機します。
-
-CDSHOOKサーバは、自サーバ内の処理カードと、リレー先からCardを組合せてたものをクライアントに返却します。
+この設定によりCDSHOOKサーバは、クライアントから受け取ったCDSリクエストのうち「**warfarin-nsaids-cds-select**」サービスに関しては、全てのリクエスト内容を**指定先ホスト**にリレーしCardの返却を待機します。CDSHOOKサーバは、自サーバ内の処理カードと併せてリレー先から取得したCardを組合せてクライアントに返却します。
 
 
 つまり、これは単純な転送なのでCDSクライアントがリクエストする「**warfarin-nsaids-cds-select**」サービスに関しては、CDSHOOKサーバではなく**CDSルール実行エンジン**に直接リクエストしても同等の結果が得られるはずです。（接続アクセス権はあると仮定です）
