@@ -1,7 +1,7 @@
 # cds-hooks-proto
 <!-- Written by Msis(Akiyama) -->
 ## [cds-server-nect-docker](./cds-server-next-docker/README.md)
-- Get Started
+- CDSHOOKサーバの開始方法
 	- [Docker仮想コンテナでのビルド方法](./cds-server-next-docker/docs/build_docker.md)
 	- [ローカル環境でのビルド方法](./cds-server-next-docker/docs/build_localhost.md)
 	- [接続テスト](./docs/build_test.md)
