@@ -8,7 +8,7 @@
 - 基本仕様・機能概要
 	- [CDSサービスとDatabaseの管理](./cds-server-next-docker/docs/extention01.md)
 	- [Discovary(/cds-selecctの例)](./cds-server-next-docker/docs/extention02.md)
-	- [CDSサービスからのFHIRリソースの取得](./docs/extention03.md)
+	- [CDSサービスからのFHIRリソースの取得](./cds-server-next-docker/docs/extention03.md)
 	- [CDSサービスの追加方法](./cds-server-next-docker/docs/extention04.md)
 	- [他ホスト（CDS実行エンジン）へのリレー方法](./cds-server-next-docker/docs/extention05.md)
 - API仕様書
