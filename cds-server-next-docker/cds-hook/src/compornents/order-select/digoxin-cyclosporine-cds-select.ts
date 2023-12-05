@@ -53,7 +53,193 @@ export default class DigoxinCyclosporineCdsSelect extends BaseInterface
     if ( ermsg !== null ){
       card['summary']=ermsg
     }else{
+      card =[
+        {
+          "uuid": uuidv4(),
+          "summary": "Potential Drug-Drug Interaction between digoxin (Digoxin 0.2 MG Oral Capsule) and cyclosporine (Cyclosporine 100 MG)",
+          "detail": "Increased risk of digoxin toxicity. Assess risk and take action if necessary. \nDigoxin toxicity is potentially serious. The clinical consequences may include anorexia, nausea, vomiting, visual changes, and cardiac arrhythmias. \nThe mechanism of this interaction appears to be mediated through P-glycoprotein inhibition by cyclosporine. P-glycoprotein is a major transporter for digoxin efflux. \nunknown. \nunknown.",
+          "indicator": "info",
+          "source": {
+              "label": "Potential Drug-Drug Interaction Clinical Decision Support",
+              "url": url
+          },
+          "suggestions": [
+              {
+                  "label": "Consultation",
+                  "actions": [
+                      {
+                          "type": "create",
+                          "description": "Request communication with digoxin prescriber",
+                          "resource": {
+                              "resourceType": "ServiceRequest",
+                              "id": "3d9f4591-0451-43b9-9b75-12a2449b138d",
+                              "status": "draft",
+                              "intent": "order",
+                              "doNotPerform": false,
+                              "code": {
+                                  "coding": [
+                                      {
+                                          "system": "http://snomed.info/sct",
+                                          "code": "11429006",
+                                          "display": "Consultation"
+                                      }
+                                  ],
+                                  "text": "Consultation"
+                              }
+                          }
+                      }
+                  ]
+              },
+              {
+                  "label": "Cancel digoxin",
+                  "actions": [
+                      {
+                          "type": "delete",
+                          "description": "Discontinue digoxin order"
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+        "uuid": uuidv4(),  
+        "summary": "Patient has digoxin level within 30 days that is below 0.9 ng/mL (SI: 1.2 nmol/L)",
+          "detail": "(Digoxin: 0.7 'ng/mL' and 2023-12-04). \nFor patients with a reliable plasma digoxin concentration in normal range, it is reasonable to anticipate an increase in plasma concentrations after the initiation of cyclosporine. Following initiation, close monitoring and adjusting the digoxin dose as needed is recommended",
+          "indicator": "info",
+          "source": {
+              "label": "Potential Drug-Drug Interaction Clinical Decision Support",
+              "url": url
+          },
+          "suggestions": [
+              {
+                  "label": "Digoxin Level",
+                  "actions": [
+                      {
+                          "type": "create",
+                          "description": "Order digoxin trough within 24 hours from the initiation of cyclosporine",
+                          "resource": {
+                              "resourceType": "ServiceRequest",
+                              "id": "b9477b0c-98c3-4a10-9a12-da767baf32f1",
+                              "status": "draft",
+                              "intent": "order",
+                              "doNotPerform": false,
+                              "code": {
+                                  "coding": [
+                                      {
+                                          "system": "http://snomed.info/sct",
+                                          "code": "269872007",
+                                          "display": "Serum digoxin measurement"
+                                      }
+                                  ],
+                                  "text": "Serum digoxin measurement"
+                              }
+                          }
+                      }
+                  ]
+              }
+          ],
+          "links": [
+              {
+                  "label": "(Dorian et al. Clin Invest Med 1988; 11(2):108-112)",
+                  "url": "http://hl7.org/fhir/ig/PDDI-CDS/citations#dorian1998",
+                  "type": "absolute"
+              },
+              {
+                  "label": "(Dorian et al. Transplant Proc. 1987; 19(1):1825-1827)",
+                  "url": "http://hl7.org/fhir/ig/PDDI-CDS/citations#dorian1987",
+                  "type": "absolute"
+              }
+          ]
+        },
+        {
+          "uuid": uuidv4(),  
+          "summary": "Within 100 days, the patient has had electrolyte and serum creatinine levels checked, and they are not on a potassium sparing or loop diuretic.",
+            "detail": "(Potassium: 3.6 'meq/L' and 2023-12-04)\n (Magnesium: 0.8 'mmol/L' and 2023-12-04)\n (Calcium: 8.6 'mg/dL' and 2023-12-04)\n",
+            "indicator": "info",
+            "source": {
+                "label": "Potential Drug-Drug Interaction Clinical Decision Support",
+                "url": url
+            },
+            "suggestions": [
+                {
+                    "label": "Serum Creatinine",
+                    "actions": [
+                        {
+                            "type": "create",
+                            "description": "Order for serum creatinine",
+                            "resource": {
+                                "resourceType": "ServiceRequest",
+                                "id": "b1b50b2e-5568-40ad-a6d8-63310e621538",
+                                "status": "draft",
+                                "intent": "order",
+                                "doNotPerform": false,
+                                "code": {
+                                    "coding": [
+                                        {
+                                            "system": "http://snomed.info/sct",
+                                            "code": "313822004",
+                                            "display": "Corrected serum creatinine"
+                                        }
+                                    ],
+                                    "text": "Serum Creatinine"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "label": "Electrolyte Panel",
+                    "actions": [
+                        {
+                            "type": "create",
+                            "description": "Order for electrolyte panel",
+                            "resource": {
+                                "resourceType": "ServiceRequest",
+                                "id": "3703fb9e-d6b8-465b-bb85-5a75783778e7",
+                                "status": "draft",
+                                "intent": "order",
+                                "doNotPerform": false,
+                                "code": {
+                                    "coding": [
+                                        {
+                                            "system": "http://snomed.info/sct",
+                                            "code": "271236005",
+                                            "display": "Serum potassium level"
+                                        },
+                                        {
+                                            "system": "http://snomed.info/sct",
+                                            "code": "312475002",
+                                            "display": "Plasma magnesium level"
+                                        },
+                                        {
+                                            "system": "http://snomed.info/sct",
+                                            "code": "390963002",
+                                            "display": "Plasma calcium level"
+                                        }
+                                    ],
+                                    "text": "Electrolyte Panel"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            "links": [
+                {
+                    "label": "(Lip et al. Postgrad Med J. 1993; 69(811):337)",
+                    "url": "http://hl7.org/fhir/ig/PDDI-CDS/citations#lip1993",
+                    "type": "absolute"
+                },
+                {
+                    "label": "(Digoxin-FDA [prescribing information] NDA 20405/S-004)",
+                    "url": "http://hl7.org/fhir/ig/PDDI-CDS/citations#nda20405",
+                    "type": "absolute"
+                }
+            ]
+        }
+      ]
       //サンプルデモデータ
+      /*
       card =[
         {
           "uuid": uuidv4(),
@@ -276,6 +462,7 @@ export default class DigoxinCyclosporineCdsSelect extends BaseInterface
           ]
         }
       ]
+      */
     }
     
     return card
