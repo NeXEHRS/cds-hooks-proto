@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>CDS Hooks Client</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}"/>
+</head>
+<body>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" id="discovery" data-toggle="tab" th:href="@{/discovery}">Discovery</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" style="background-color: lightcyan;" id="hooks" data-toggle="tab" th:href="@{/hooks}">PDDI Hooks</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="hooks">
+            <form id="hooksForm" action="#" th:action="@{/hooks}" th:object="${hooks}" method="post">
+                <div class="container-fluid">
+                    <div class="col-md-8 border d-flex flex-column">
+                        <div class="row">
+                            <div class="col-auto">
+                                ユースケース：
+                            </div>
+                            <div class="col-auto">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" th:field="*{selectedUseCase}" th:value="case1" onchange="loadJson()" checked>
+                                    <label class="form-check-label" for="useCase1">ワルファリン + NSAIDs</label>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" th:field="*{selectedUseCase}" th:value="case2" onchange="loadJson()">
+                                    <label class="form-check-label" for="useCase2">ジゴキシン + シクロスポリン</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-auto">
+                                シナリオ：
+                            </div>
+                            <div class="col-auto">
+                                <select class="form-control" th:field="*{selectedScenario}" onchange="loadJson()">
+                                  <option th:value="scenario1">Scenario1</option>
+                                  <option th:value="scenario2">Scenario2</option>
+                                  <option th:value="scenario3">Scenario3</option>
+                                  <option th:value="scenario4">Scenario4</option>
+                                  <option th:value="scenario5">Scenario5</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="ml-auto">
+                            <button type="submit" class="btn btn-primary">リクエスト実行</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>リクエスト</p>
+                            <textarea id="requestBody" rows="15" cols="40" class="form-control" readonly th:field="*{requestBody}" />
+                        </div>
+                        <div class="col-md-6">
+                            <p>レスポンス</p>
+                            <textarea id="responseBody" rows="15" cols="40" class="form-control" readonly th:field="*{responseBody}" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    function loadJson() {
+        const form = document.getElementById("hooksForm");
+        const formData = new FormData(form);
+        fetch("/loadJson", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("requestBody").value = JSON.stringify(data, null, 2);
+        })
+    }
+</script>
+</html>
