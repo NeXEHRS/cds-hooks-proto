@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets =  ["debian-openssl-3.0.x", "linux-arm64-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Service {
+  pkey Int @default(autoincrement()) @id
+  enable Boolean  @default(true)
+  debug Boolean  @default(false)
+  hook String
+  title String
+  description String
+  id String
+  usageRequirements String
+  prefetchs Prefetch[]
+  extentions Extention[]
+  cdshost Cdshost[]
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+}
+
+model Prefetch {
+  pkey Int @default(autoincrement()) @id
+  label String
+  parameta String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  services Service[]
+}
+
+model Extention {
+  pkey Int @default(autoincrement()) @id
+  label String
+  parameta String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  services Service[]
+}
+
+model Cdshost {
+  pkey Int @default(autoincrement()) @id
+  url String
+  username String
+  password String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  services Service[]
+}

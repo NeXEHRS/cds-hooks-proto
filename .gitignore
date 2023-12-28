@@ -1,0 +1,35 @@
+### cds-server-next-docker ### 
+
+# dependencies
+cds-server-next-docker/cds-hook/node_modules
+cds-server-next-docker/cds-hook/.pnp
+cds-server-next-docker/cds-hook.pnp.js
+
+# testing
+cds-server-next-docker/cds-hook/coverage
+
+# next.js
+cds-server-next-docker/cds-hook/.next/
+cds-server-next-docker/cds-hook/out/
+
+# production
+cds-server-next-docker/cds-hook/build
+
+# misc
+cds-server-next-docker/cds-hook.DS_Store
+cds-server-next-docker/cds-hook*.pem
+
+# debug
+cds-server-next-docker/cds-hook/npm-debug.log*
+cds-server-next-docker/cds-hook/yarn-debug.log*
+cds-server-next-docker/cds-hook/yarn-error.log*
+
+# local env files
+cds-server-next-docker/cds-hook/.env*.local
+
+# vercel
+cds-server-next-docker/cds-hook/.vercel
+
+# typescript
+cds-server-next-docker/cds-hook/*.tsbuildinfo
+cds-server-next-docker/cds-hook/next-env.d.ts

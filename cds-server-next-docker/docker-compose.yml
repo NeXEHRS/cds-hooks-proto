@@ -1,0 +1,14 @@
+services:
+  hook:
+    build:
+      context: .
+    tty: true
+    volumes:
+      - ./cds-hook:/cds-hook
+    environment:
+      - WATCHPACK_POLLING=true
+    #command: /bin/sh -c 'npm run dev'
+    #command: /bin/sh -c 'npm start'
+    ports:
+      - "3000:3000"
+      - "7777:7777"
