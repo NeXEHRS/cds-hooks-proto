@@ -1,0 +1,22 @@
+{
+  "resourceType": "ActivityDefinition",
+  "id": "ad204",
+  "status": "draft",
+  "intent": "order",
+  "kind": "MedicationRequest",
+  "productCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "315819",
+        "display": "Digoxin 0.125 MG"
+      }
+    ],
+    "text": "Digoxin 0.125 MG"
+  },
+  "participant": [
+    {
+      "type": "practitioner"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+    "resourceType": "ActivityDefinition",
+    "id": "ad205",
+    "status": "draft",
+    "intent": "order",
+    "kind": "ServiceRequest",
+    "code": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "313822004",
+          "display": "Corrected serum creatinine"
+        }
+      ],
+      "text": "Serum Creatinine"
+    },
+    "participant": [
+      {
+        "type": "practitioner"
+      }
+    ]
+}

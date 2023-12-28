@@ -1,0 +1,22 @@
+{
+  "resourceType": "ActivityDefinition",
+  "id": "ad201",
+  "status": "draft",
+  "intent": "order",
+  "kind": "ServiceRequest",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "11429006",
+        "display": "Consultation"
+      }
+    ],
+    "text": "Consultation"
+  },
+  "participant": [
+    {
+      "type": "practitioner"
+    }
+  ]
+}

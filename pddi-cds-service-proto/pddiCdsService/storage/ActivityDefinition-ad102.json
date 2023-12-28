@@ -1,0 +1,22 @@
+{
+  "resourceType": "ActivityDefinition",
+  "id": "ad102",
+  "status": "draft",
+  "intent": "order",
+  "kind": "MedicationRequest",
+  "productCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "198440",
+        "display": "Acetaminophen 500 MG Oral Tablet"
+      }
+    ],
+    "text": "Acetaminophen 500 MG Oral Tablet"
+  },
+  "participant": [
+    {
+      "type": "practitioner"
+    }
+  ]
+}

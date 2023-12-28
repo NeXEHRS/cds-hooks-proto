@@ -1,0 +1,154 @@
+{
+  "patientResults": {
+    "f101": {
+      "Patient": {
+        "name": [
+          {
+            "use": {
+              "value": "official"
+            },
+            "family": {
+              "value": "Matsunoodera"
+            },
+            "given": [
+              {
+                "value": "Aonogo"
+              }
+            ]
+          }
+        ],
+        "gender": {
+          "value": "male"
+        },
+        "birthDate": {
+          "value": "1974-12-25"
+        },
+        "id": {
+          "value": "f101"
+        }
+      },
+      "Topical Diclofenac Prescription": [],
+      "Is context medication topical diclofenac": false,
+      "Warfarin Rx": [
+        {
+          "system": {
+            "value": "http://www.nlm.nih.gov/research/umls/rxnorm"
+          },
+          "code": {
+            "value": "855350"
+          },
+          "display": {
+            "value": "Warfarin Sodium 0.5 MG Oral Tablet"
+          }
+        }
+      ],
+      "Is warfarin in prefetch": true,
+      "NSAID Prescription": [
+        {
+          "system": {
+            "value": "http://www.nlm.nih.gov/research/umls/rxnorm"
+          },
+          "code": {
+            "value": "834022"
+          },
+          "display": {
+            "value": "Ketorolac Tromethamine 10 MG Oral Tablet"
+          }
+        }
+      ],
+      "Is context medication systemic NSAID": true,
+      "Inclusion Criteria": true,
+      "Is not context medication topical diclofenac": true,
+      "Get Base Summary": "Potential Drug-Drug Interaction between warfarin (Warfarin Sodium 0.5 MG Oral Tablet) and NSAID (Ketorolac Tromethamine 10 MG Oral Tablet).",
+      "Get Base Indicator": "warning",
+      "Acetaminophen 325 MG": {
+        "code": "313782",
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "display": "Acetaminophen 325 MG Oral Tablet"
+      },
+      "Acetaminophen 500 MG": {
+        "code": "198440",
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "display": "Acetaminophen 500 MG Oral Tablet"
+      },
+      "Get Base Label 1": "Substitute NSAID (Ketorolac Tromethamine 10 MG Oral Tablet) with APAP (Acetaminophen 325 MG Oral Tablet).",
+      "Get Base Label 2": "Substitute NSAID (Ketorolac Tromethamine 10 MG Oral Tablet) with APAP (Acetaminophen 500 MG Oral Tablet).",
+      "PPIs and Misoprostols Rx": [],
+      "Taking PPI or misoprostol": false,
+      "Get Card 2 Indicator": "critical",
+      "Get Card 2 Summary": "Patient is not taking a proton pump inhibitor or misoprostol.",
+      "Get Card 2 Detail": "Proton pump inhibitors and misoprostol may reduce the risk of UGIB in patients receiving NSAIDs and warfarin.",
+      "Get Card 2 Label": "Use only if benefit outweighs risk.",
+      "GI Bleeds Condition": {
+        "clinicalStatus": {
+          "value": "active"
+        },
+        "verificationStatus": {
+          "value": "differential"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": {
+                "value": "http://snomed.info/sct"
+              },
+              "code": {
+                "value": "12847006"
+              },
+              "display": {
+                "value": "Acute duodenal ulcer with hemorrhage"
+              }
+            }
+          ]
+        },
+        "subject": {
+          "reference": {
+            "value": "Patient/f101"
+          }
+        },
+        "assertedDate": {
+          "value": "2023-11-01"
+        },
+        "id": {
+          "value": "c101"
+        },
+        "meta": {
+          "versionId": {
+            "value": "1"
+          },
+          "lastUpdated": {
+            "value": "2023-10-01T09:04:41.038+00:00"
+          }
+        }
+      },
+      "Age > 65 years or Hx UGIB": true,
+      "Get Card 3 Indicator": "warning",
+      "Get Card 3 Summary": "Patient is 65 y/o or does have a history of upper gastrointestinal bleed (\"Acute duodenal ulcer with hemorrhage\" and 2023-11-01).",
+      "Get Card 3 Detail": "Patients with a history of UGIB or peptic ulcer may have an increased risk of UGIB from this interaction. The extent to which older age is an independent risk factor for UGIB due to these interactions is not firmly established, but UGIB in general is known to increase with age.",
+      "Get Card 3 Label": "Use only if benefit outweighs risk.",
+      "Systemic Corticosteroids Rx": [],
+      "Has Systemic Corticosteroids": false,
+      "Aldosterone Antagonists Rx": [],
+      "Has Aldosterone Antagonists": false,
+      "NSAID Rx": [
+        {
+          "system": {
+            "value": "http://www.nlm.nih.gov/research/umls/rxnorm"
+          },
+          "code": {
+            "value": "834022"
+          },
+          "display": {
+            "value": "Ketorolac Tromethamine 10 MG Oral Tablet"
+          }
+        }
+      ],
+      "Has NSAID": true,
+      "Taking CS, MCRA, or NSAID": true,
+      "Get Card 4 Indicator": "warning",
+      "Get Card 4 Summary": "Patient is concomitantly taking high dose or multiple NSAIDs (Ketorolac Tromethamine 10 MG Oral Tablet).",
+      "Get Card 4 Detail": "Both corticosteroids and aldosterone antagonists have been shown to subsetantially increase the risk of UGIB in patients on NSAIDs, with relative risks of 12.8 and 11 respectively compared to a risk of 4.3 with NSAIDs alone (Masclee et al. Gastroenterology 2014; 147:784-92.)",
+      "Get Card 4 Label": "Use only if benefit outweighs risk."
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "cards": [
+    {
+      "summary": "Potential Drug-Drug Interaction between warfarin (Warfarin Sodium 0.5 MG Oral Tablet) and NSAID (Ketorolac Tromethamine 10 MG Oral Tablet).",
+      "indicator": "warning",
+      "detail": "Increased risk of bleeding. \nBleeding is a serious potential clinical consequence because it can result in death, life-threatening hospitalization, and disability. \nNon-steroidal anti-inflammatory drugs (NSAIDs) have antiplatelet effects which increase the bleeding risk when combined with oral anticoagulants such as warfarin. The antiplatelet effect of NSAIDs lasts only as long as the NSAID is present in the circulation, unlike aspirinÅfs antiplatelet effect, which lasts for up to 2 weeks after aspirin is discontinued. NSAIDs also can cause peptic ulcers and most of the evidence for increased bleeding risk with NSAIDs plus warfarin is due to upper gastrointestinal bleeding (UGIB). \nunknown. \n unknown.",
+      "source": {
+        "label": "Warfarin-NSAIDs clinical decision support algorithm",
+        "url": "https://ddi-cds.org/warfarin-nsaids/"
+      },
+      "suggestions": [
+        {
+          "label": "Assess risk and take action if necessary.",
+          "actions": [
+            {
+              "type": "delete",
+              "description": "If the NSAID is being used as an analgesic or antipyretic, it would be prudent to use an alternative such as acetaminophen. In some people, acetaminophen can increase the anticoagulant effect of warfarin, so monitor the INR if acetaminophen is used in doses over 2 g/day for a few days. For more severe pain consider short-term opioids in place of the NSAID."
+            }
+          ]
+        },
+        {
+          "label": "Substitute NSAID (Ketorolac Tromethamine 10 MG Oral Tablet) with APAP (Acetaminophen 325 MG Oral Tablet).",
+          "actions": [
+            {
+              "type": "create",
+              "description": "Order for APAP <2g per day (APAP 500 mg every 4-6 hours prn).",
+              "resource": {
+                "resourceType": "MedicationRequest",
+                "id": "3f6b9b43-9354-4512-9883-a915417e2936",
+                "intent": "order",
+                "medicationCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                      "code": "313782",
+                      "display": "Acetaminophen 325 MG Oral Tablet"
+                    }
+                  ],
+                  "text": "Acetaminophen 325 MG Oral Tablet"
+                },
+                "subject": {
+                  "reference": "f101"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "label": "Substitute NSAID (Ketorolac Tromethamine 10 MG Oral Tablet) with APAP (Acetaminophen 500 MG Oral Tablet).",
+          "actions": [
+            {
+              "type": "create",
+              "description": "Order for APAP <2g per day (APAP 500 mg every 4-6 hours prn).",
+              "resource": {
+                "resourceType": "MedicationRequest",
+                "id": "d54e75a7-90ce-4ee7-90b6-63333c052648",
+                "intent": "order",
+                "medicationCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                      "code": "198440",
+                      "display": "Acetaminophen 500 MG Oral Tablet"
+                    }
+                  ],
+                  "text": "Acetaminophen 500 MG Oral Tablet"
+                },
+                "subject": {
+                  "reference": "f101"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "summary": "Patient is not taking a proton pump inhibitor or misoprostol.",
+      "indicator": "critical",
+      "detail": "Proton pump inhibitors and misoprostol may reduce the risk of UGIB in patients receiving NSAIDs and warfarin.",
+      "source": {
+        "label": "Warfarin-NSAIDs clinical decision support algorithm",
+        "url": "https://ddi-cds.org/warfarin-nsaids/"
+      },
+      "suggestions": [
+        {
+          "label": "Use only if benefit outweighs risk."
+        }
+      ]
+    },
+    {
+      "summary": "Patient is 65 y/o or does have a history of upper gastrointestinal bleed (\"Acute duodenal ulcer with hemorrhage\" and 2020-03-01).",
+      "indicator": "warning",
+      "detail": "Patients with a history of UGIB or peptic ulcer may have an increased risk of UGIB from this interaction. The extent to which older age is an independent risk factor for UGIB due to these interactions is not firmly established, but UGIB in general is known to increase with age.",
+      "source": {
+        "label": "Warfarin-NSAIDs clinical decision support algorithm",
+        "url": "https://ddi-cds.org/warfarin-nsaids/"
+      },
+      "suggestions": [
+        {
+          "label": "Use only if benefit outweighs risk."
+        }
+      ]
+    },
+    {
+      "summary": "Patient is not concomitantly taking systemic corticosteroids, aldosterone antagonist, or high dose or multiple NSAIDs.",
+      "indicator": "info",
+      "detail": "Both corticosteroids and aldosterone antagonists have been shown to subsetantially increase the risk of UGIB in patients on NSAIDs, with relative risks of 12.8 and 11 respectively compared to a risk of 4.3 with NSAIDs alone (Masclee et al. Gastroenterology 2014; 147:784-92.)",
+      "source": {
+        "label": "Warfarin-NSAIDs clinical decision support algorithm",
+        "url": "https://ddi-cds.org/warfarin-nsaids/"
+      },
+      "suggestions": [
+        {
+          "label": "Assess risk and take action if necessary."
+        }
+      ]
+    }
+  ]
+}

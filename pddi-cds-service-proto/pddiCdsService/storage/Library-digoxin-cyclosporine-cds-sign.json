@@ -1,0 +1,25 @@
+{
+  "resourceType": "Library",
+  "id": "digoxin-cyclosporine-cds-sign",
+  "version": "1.0",
+  "status": "draft",
+  "url": "http://hl7.org/fhir/ig/PDDI-CDS/Library/digoxin-cyclosporine-cds-sign",
+  "type": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/library-type",
+        "code": "logic-library"
+      }
+    ]
+  },
+  "content": [
+    {
+      "contentType": "text/cql",
+      "url":"digoxin-cyclosporine-cds-logic-r4.cql"
+    },
+    {
+      "contentType": "application/elm+json",
+      "url":"digoxin-cyclosporine-cds-logic-r4.json"
+    }
+  ]
+}

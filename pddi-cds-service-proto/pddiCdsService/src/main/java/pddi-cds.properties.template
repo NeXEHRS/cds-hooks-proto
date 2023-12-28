@@ -1,0 +1,18 @@
+### this server home
+pddi.cds.server.home=$$ProjectRoot$$
+### work folder for this server
+pddi.cds.server.works.folder=$$ProjectRoot$$/works
+### storage for this server
+pddi.cds.server.storage=$$ProjectRoot$$/storage
+### pddi-cds-fhir-support-tools home folder
+pddi.cds.fhir.support.tools.home=$$ProjectRoot$$/src/main/javascript
+
+### cql-execution home folder
+cql.execution.home=$$CqlExecution$$
+### cql-exec-fhir home folder
+cql.exec.fhir.home=$$CqlExecFhir$$
+### node.js execution path
+nodejs.exec.path=$$NodeJS$$
+
+# do not change below parameter
+pddi-cds.server.id=urn:uuid:c05f8d1d-d482-db33-edf0-4b5a688b40fa

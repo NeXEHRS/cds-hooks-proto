@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="compile" name="pddiCdsService">
+    <property name="build.properties" value="./build.properties"/>
+    <property file="${build.properties}"/>
+    <!--dirname property="project_fullpath" file="ant.file"/-->
+	<path id="project_fullpath" location="${basedir}"/>
+    <property name="lib.home" value="./WebContent/WEB-INF/lib" />
+    <property name="tomcat.lib.home" value="${tomcat.home}/lib" />
+	<pathconvert property="pfp" refid="project_fullpath" dirsep="/" />
+	<property name="projectRoot" value="${pfp}"/>
+
+    <filterset id="server.filters" begintoken="$$$$" endtoken="$$$$">
+        <filter token="CqlExecution" value="${cql.execution.home}"/>
+        <filter token="CqlExecFhir" value="${cql.exec.fhir.home}"/>
+        <filter token="NodeJS" value="${nodejs.exec.path}"/>
+    	<filter token="ProjectRoot" value="${projectRoot}"/>
+    </filterset>
+	
+    <path id="server.classpath">
+        <fileset dir="${tomcat.lib.home}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${lib.home}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+    
+    <path id="resource.setting.classpath">
+        <pathelement location="WebContent/WEB-INF/classes"/>
+        <fileset dir="${tomcat.lib.home}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${lib.home}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="clean">
+        <delete dir="WebContent/WEB-INF/classes"/>
+        <delete dir="build/classes"/>
+    </target>
+    
+    <target name="package-clean">
+        <delete dir="dist/fhirServerCore-package"/>
+    </target>
+
+    <target name="compile" depends="clean">
+        <mkdir dir="build/classes"/>
+        <mkdir dir="WebContent/WEB-INF/classes"/>    	
+        <javac srcdir="src/main/java" destdir="WebContent/WEB-INF/classes" failonerror="false"
+            classpathref="server.classpath" includeantruntime="false" debug="true" encoding="UTF-8"/>
+        <mkdir dir="WebContent/WEB-INF/classes/resources"/>
+        <copy todir="WebContent/WEB-INF/classes/resources">
+          <fileset dir="src/main/java/resources"></fileset>
+        </copy>
+        <copy file="src/main/java/pddi-cds.properties.template" tofile="src/main/java/pddi-cds.properties" overwrite="true">
+            <filterset refid="server.filters"></filterset>
+        </copy> 
+        <copy file="src/main/java/pddi-cds.properties" tofile="WebContent/WEB-INF/classes/pddi-cds.properties" overwrite="true">
+        </copy> 
+        <copy file="src/main/javascript/lib/fhir-valueset-service.js.template" 
+        	  tofile="src/main/javascript/lib/fhir-valueset-service.js" overwrite="true">
+                    <filterset refid="server.filters"></filterset>
+        </copy> 
+        <!--copy file="src/main/java/logback.xml" tofile="build/classes/logback.xml"/-->
+    </target>
+
+	<!--
+    <target name="package" depends="package-clean, compile">
+        <mkdir dir="dist/fhirServerCore-package"/>
+                
+        <copy todir="dist/fhirServerCore-package">
+          <fileset dir="WebContent"></fileset>
+          <fileset dir="dbset"></fileset>
+        </copy>
+        <copy file="fhirserver.properties" tofile="dist/fhirServerCore-package/fhirserver.properties"/>
+        <copy file="definitionResources.properties" tofile="dist/fhirServerCore-package/definitionResources.properties"/>
+        <copy file="build-package.xml" tofile="dist/fhirServerCore-package/build.xml"/>
+        <copy file="build.properties" tofile="dist/fhirServerCore-package/build.properties"/>
+    </target>
+    -->
+	
+    <target name="war">
+        <jar destfile="dist/${servlet.name}.war" basedir="./WebContent"></jar>
+    </target>
+
+    <target name="undeploy"
+      description="${tomcat.home}/webapps/${servlet.name}の削除実行">
+        <delete dir="${tomcat.home}/webapps/${servlet.name}"/>
+        <delete dir="${tomcat.home}/work/Catalina/localhost/${servlet.name}"/>
+        <delete file="${tomcat.home}/conf/Catalina/localhost/${servlet.name}.xml"/>
+    </target>
+
+    <target name="deploy"
+      depends="war, undeploy"
+      description="${tomcat.home}/webapps/${servlet.name}の作成">
+        <unwar dest="${tomcat.home}/webapps/${servlet.name}" overwrite="no" src="dist/${servlet.name}.war">
+        </unwar>
+        <echo message="****************Restart Tomcat now.*******************"/>
+        <echo message=""/>
+    </target>
+</project>

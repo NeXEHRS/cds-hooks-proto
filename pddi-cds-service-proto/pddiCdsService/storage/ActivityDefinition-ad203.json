@@ -1,0 +1,22 @@
+{
+  "resourceType": "ActivityDefinition",
+  "id": "ad203",
+  "status": "draft",
+  "intent": "order",
+  "kind": "ServiceRequest",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "269872007",
+        "display": "Serum digoxin measurement"
+      }
+    ],
+    "text": "Serum digoxin measurement"
+  },
+  "participant": [
+    {
+      "type": "practitioner"
+    }
+  ]
+}
