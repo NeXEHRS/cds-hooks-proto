@@ -30,7 +30,7 @@ $ git clone https://github.com/msis-net/cds-next-on-docker.git
 3. cds-hook/に移動します。
 ```bash
 $ cd cds-next-on-docker/cds-hook
-[cds-hook]> 
+[/cds-hook]> 
 ```
 4. src/prisma/schema.prismaの「generator client.binaryTargets」をコメントアウトします。
 ```bash
@@ -44,23 +44,24 @@ generator client {
 5. Next.jsのインストールとベースプロジェクトのビルド
 ```bash
 -- package-lock.jsonを参照して依存パッケージをインストールします
-[cds-hook]> npm ci
+[/cds-hook]> npm ci
 
 -- uuidが利用できるように以下のコマンドを実行
-[cds-hook]> npm i --save-dev @types/uuid
+[/cds-hook]> npm i --save-dev @types/uuid
 
 -- prismaクライアントをインストール
-[cds-hook]> npm install @prisma/client@dev prisma@dev
+[/cds-hook]> npm install @prisma/client@dev prisma@dev
 
 -- 既存データベース(sqlLite)のgenerate
-[cds-hook]> cd src/
-[cds-hook]> npx prisma generate
-[cds-hook]> cd ../ 
+[/cds-hook]> cd src/
+[/src]> npx prisma generate
+[/src]> cd ../
+[/cds-hook]>
 ```
 
 6. サーバー起動
 ```bash
-[cds-hook]> npm run dev
+[/cds-hook]> npm run dev
 > cds-hook@0.1.0 dev
 > next dev
 
