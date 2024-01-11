@@ -6,7 +6,7 @@
 - 動作環境
 - フォルダ構成
 - 事前準備
-- コマンド
+- 実行コマンド
 
 ## [cds-server-nect-docker](./cds-server-next-docker/README.md)
 - CDSHOOKサーバの開始方法
