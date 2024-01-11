@@ -50,6 +50,8 @@ scenario
 以下のコマンドを実行した後、 http://localhost:8080 にアクセスすると初期画面（Discoveryタブ）が表示されます。
 
 ```
+#実行モジュール/へ移動
+cd ./実行モジュール/
 java -classpath ./config -jar cds-hooks-client.jar
 ```
 
