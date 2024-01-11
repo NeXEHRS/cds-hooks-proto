@@ -16,16 +16,16 @@ pddiCdsService インストール
 （２）pddiCdsServiceのビルド実行
 端末（Windowsの場合、PowerShellまたはコマンドプロンプト）を起動し、以下を実行する
 
-$ cd <Folder>
-$ docker pull almalinux
-$ docker build -t pddi-cds-service ./
+$ cd <Folder>　
+$ docker pull almalinux　
+$ docker build -t pddi-cds-service ./　
 
 * WindowsのPowerShellやコマンドプロンプトの場合上記「$」を「>」に読み替える。以下も同様。
 
 （３）pddiCdsServiceの作成、起動
  （２）に引き続き以下を実行する
 
-$ docker run -d -p 18080:8080 --name service1 pddi-cds-server:latest
+$ docker run -d -p 18080:8080 --name service1 pddi-cds-server:latest　
 
 これにより、pddiCdsServiceはDockerのコンテナとして起動する。
 pddiCdsServiceのAPIは1.3を参照のこと。
