@@ -1,5 +1,5 @@
 ### ローカル環境でのビルド方法
-ローカル環境に本プロジェクトを構築します。macOS,Windows,LinuxそれぞれのOSで作業は同じです。この場合もgitリポジトリは同じですが、Docker関連ファイルは利用せず、ダウンロードしたアーカイブに含まれる「cds-hook/」をルートディレクトリとしてプロジェクトをビルドします。
+ローカル環境に本プロジェクトを構築します。macOS,Windows,LinuxそれぞれのOSで作業は同じです。この場合もgitリポジトリは同じですが、Docker関連ファイルは利用せず、ダウンロードしたアーカイブに含まれる「cds-hook-server/」をルートディレクトリとしてプロジェクトをビルドします。
 
 [Node.js](https://nodejs.org/en)実行環境は必須です。(本プロジェクトは18.xLTS版を利用しています。)
 Node環境のインストール方法は[https://github.com/nodesource/distributions](https://github.com/nodesource/distributions)を参照し最新のLTS版を利用するようにしてください。（多くのWebサイトの方法は非推奨となっています。）　　
@@ -27,10 +27,10 @@ v18.16.1
 $ git clone https://github.com/msis-net/cds-next-on-docker.git
 ```
 
-3. cds-hook/に移動します。
+3. cds-hook-server/に移動します。
 ```bash
-$ cd cds-next-on-docker/cds-hook
-[/cds-hook]> 
+$ cd cds-next-on-docker/cds-hook-server
+[/cds-hook-server]> 
 ```
 4. src/prisma/schema.prismaの「generator client.binaryTargets」をコメントアウトします。
 ```bash
@@ -44,25 +44,25 @@ generator client {
 5. Next.jsのインストールとベースプロジェクトのビルド
 ```bash
 -- package-lock.jsonを参照して依存パッケージをインストールします
-[/cds-hook]> npm ci
+[/cds-hook-server]> npm ci
 
 -- uuidが利用できるように以下のコマンドを実行
-[/cds-hook]> npm i --save-dev @types/uuid
+[/cds-hook-server]> npm i --save-dev @types/uuid
 
 -- prismaクライアントをインストール
-[/cds-hook]> npm install @prisma/client@dev prisma@dev
+[/cds-hook-server]> npm install @prisma/client@dev prisma@dev
 
 -- 既存データベース(sqlLite)のgenerate
-[/cds-hook]> cd src/
+[/cds-hook-server]> cd src/
 [/src]> npx prisma generate
 [/src]> cd ../
-[/cds-hook]>
+[/cds-hook-server]>
 ```
 
 6. サーバー起動
 ```bash
-[/cds-hook]> npm run dev
-> cds-hook@0.1.0 dev
+[/cds-hook-server]> npm run dev
+> cds-hook-server@0.1.0 dev
 > next dev
 
   ▲ Next.js 13.5.x
