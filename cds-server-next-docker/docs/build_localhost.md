@@ -52,7 +52,7 @@ generator client {
 -- 元のディレクトリに戻る
 [/src]> cd ../
 [/cds-hook-server]>
-```bash
+```
 
 ※generateでエラーが発生する場合は以下の２つのコマンドを実行
 ```bash
