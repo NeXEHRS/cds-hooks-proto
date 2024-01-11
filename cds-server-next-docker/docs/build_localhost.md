@@ -45,24 +45,29 @@ generator client {
 ```bash
 -- package-lock.jsonを参照して依存パッケージをインストールします
 [/cds-hook-server]> npm ci
+※処理が完了するまで待機
 
--- uuidが利用できるように以下のコマンドを実行
-[/cds-hook-server]> npm i --save-dev @types/uuid
 
--- prismaクライアントをインストール
-[/cds-hook-server]> npm install @prisma/client@dev prisma@dev
 
 -- 既存データベース(sqlLite)のgenerate
 [/cds-hook-server]> cd src/
 [/src]> npx prisma generate
+※エラーが発生する場合は以下の２つのコマンドを実行
+
+-- uuidが利用できるように以下のコマンドを実行
+[/cds-hook-server]> npm i --save-dev @types/uuid
+-- prismaクライアントをインストール
+[/cds-hook-server]> npm install @prisma/client@dev prisma@dev
+
 [/src]> cd ../
 [/cds-hook-server]>
+
 ```
 
 6. サーバー起動
 ```bash
 [/cds-hook-server]> npm run dev
-> cds-hook-server@0.1.0 dev
+> cds-hook@0.1.0 dev
 > next dev
 
   ▲ Next.js 13.5.x
