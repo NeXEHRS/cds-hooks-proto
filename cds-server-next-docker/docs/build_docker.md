@@ -11,7 +11,7 @@ $ git clone https://github.com/msis-net/cds-next-on-docker.git
 
 2. プロジェクトのDockerコンテナの作成と起動
 ```bash
-$ cd cds-next-on-docker
+$ cd cds-server-next-docker
 (Linux/mac)$ docker compose up --build -d
 (Win)$ docker-compose up --build -d
 ```
