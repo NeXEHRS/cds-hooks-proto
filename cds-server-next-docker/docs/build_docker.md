@@ -11,7 +11,7 @@ $ git clone https://github.com/msis-net/cds-next-on-docker.git
 
 2. プロジェクトのDockerコンテナの作成と起動
 ```bash
-$ cd cds-next-on-docker
+$ cd cds-server-next-docker
 (Linux/mac)$ docker compose up --build -d
 (Win)$ docker-compose up --build -d
 ```
@@ -26,30 +26,30 @@ c0558962e2c6   cds-next-on-docker-hook   "docker-entrypoint.s…"
 
 コンテナIDを使ってコンテナに入る(4.コンテナ内での作業参照)
 $ docker exec -it c0558962e2c6 bash
-root@c0558962e2c6:/cds-hook#
+root@c0558962e2c6:/cds-hook-server#
 ```
 
 4. （コンテナ内での作業）Next.jsのインストールとベースプロジェクトのビルド
 ```bash
 -- package-lock.jsonを参照して依存パッケージをインストールします
-root@*:/cds-hook# npm ci
+root@*:/cds-hook-server# npm ci
 
 -- uuidが利用できるように以下のコマンドを実行
-root@*:/cds-hook# npm i --save-dev @types/uuid
+root@*:/cds-hook-server# npm i --save-dev @types/uuid
 
 -- prismaクライアントをインストール
-root@*:/cds-hook# npm install @prisma/client@dev prisma@dev
+root@*:/cds-hook-server# npm install @prisma/client@dev prisma@dev
 
 -- 既存データベース(sqlLite)のgenerate
-root@*:/cds-hook# cd src/
-root@*:/cds-hook/src# npx prisma generate
-root@*:/cds-hook/src# cd ../ 
-root@*:/cds-hook#
+root@*:/cds-hook-server# cd src/
+root@*:/cds-hook-server/src# npx prisma generate
+root@*:/cds-hook-server/src# cd ../ 
+root@*:/cds-hook-server#
 ```
 
 5. サーバー起動テスト(コンテナ内)
 ```bash
-root@*:/cds-hook# npm run dev
+root@*:/cds-hook-server# npm run dev
 > cds-hook@0.1.0 dev
 > next dev
 
@@ -64,7 +64,7 @@ root@*:/cds-hook# npm run dev
 
 ```bash
 コンテナから出る
-root@*:/cds-hook# exit
+root@*:/cds-hook-server# exit
 [/cds-next-on-docker]>
 
 docker-compose.ymlの内容を一部修正
@@ -78,10 +78,10 @@ command: /bin/sh -c 'npm run dev'
  以後はこのコマンドで実行します
 [/cds-next-on-docker]> docker-compose up -d 
 [+] Running 1/1
- ✔ Container cds-next-on-docker-hook-1  Started
+ ✔ Container cds-server-next-docker-hook-1  Started
 
  - http://localhost:3000へ接続してページが表示される事を確認
 確認できたらコンテナを停止する
 [/cds-next-on-docker]> docker-compose stop
 [+] Stopping 1/1
- ✔ Container cds-next-on-docker-hook-1  Stopped
+ ✔ Container cds-server-next-docker-hook-1  Stopped

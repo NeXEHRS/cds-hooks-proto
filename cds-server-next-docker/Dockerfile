@@ -22,5 +22,5 @@ COPY ./.alias /root/
 RUN cat /root/.alias >> /root/.bashrc
 
 
-RUN mkdir cds-hook
-WORKDIR /cds-hook
+RUN mkdir cds-hook-server
+WORKDIR /cds-hook-server

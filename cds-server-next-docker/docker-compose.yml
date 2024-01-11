@@ -4,7 +4,7 @@ services:
       context: .
     tty: true
     volumes:
-      - ./cds-hook:/cds-hook
+      - ./cds-hook-server:/cds-hook-server
     environment:
       - WATCHPACK_POLLING=true
     #command: /bin/sh -c 'npm run dev'
