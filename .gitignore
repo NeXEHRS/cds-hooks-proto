@@ -1,4 +1,6 @@
 ### cds-server-next-docker ### 
+cds-server-next-docker/node_modules
+cds-server-next-docker/.next
 
 # dependencies
 cds-server-next-docker/cds-hook/node_modules
