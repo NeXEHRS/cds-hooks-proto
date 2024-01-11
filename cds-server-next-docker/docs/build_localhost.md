@@ -46,20 +46,20 @@ generator client {
 -- package-lock.jsonを参照して依存パッケージをインストールします
 [/cds-hook-server]> npm ci
 ※処理が完了するまで待機
-
 -- 既存データベース(sqlLite)のgenerate
 [/cds-hook-server]> cd src/
 [/src]> npx prisma generate
-
-※generateでエラーが発生する場合は以下の２つのコマンドを実行
--- uuidが利用できるように以下のコマンドを実行
-[/cds-hook-server]> npm i --save-dev @types/uuid
--- prismaクライアントをインストール
-[/cds-hook-server]> npm install @prisma/client@dev prisma@dev
-
+-- 元のディレクトリに戻る
 [/src]> cd ../
 [/cds-hook-server]>
+```bash
 
+※generateでエラーが発生する場合は以下の２つのコマンドを実行
+```bash
+-- uuidライブラリ
+[/cds-hook-server]> npm i --save-dev @types/uuid
+-- prismaクライアント
+[/cds-hook-server]> npm install @prisma/client@dev prisma@dev
 ```
 
 6. サーバー起動
