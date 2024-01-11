@@ -78,10 +78,10 @@ command: /bin/sh -c 'npm run dev'
  以後はこのコマンドで実行します
 [/cds-next-on-docker]> docker-compose up -d 
 [+] Running 1/1
- ✔ Container cds-next-on-docker-hook-1  Started
+ ✔ Container cds-server-next-docker-hook-1  Started
 
  - http://localhost:3000へ接続してページが表示される事を確認
 確認できたらコンテナを停止する
 [/cds-next-on-docker]> docker-compose stop
 [+] Stopping 1/1
- ✔ Container cds-next-on-docker-hook-1  Stopped
+ ✔ Container cds-server-next-docker-hook-1  Stopped
