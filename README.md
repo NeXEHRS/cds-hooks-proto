@@ -1,8 +1,12 @@
 
 
 # cds-hooks-proto
-<!-- Written by Msis(Akiyama) -->
-## [cds-hooks-client](./cds-hooks-client/実行モジュール/実行方法.md)
+## [cds-hooks-client](./cds-hooks-client/README.md)
+- 動作環境
+- フォルダ構成
+- 事前準備
+- 実行コマンド
+
 
 ## [cds-server-nect-docker](./cds-server-next-docker/README.md)
 - CDSHOOKサーバの開始方法
