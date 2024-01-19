@@ -2,7 +2,7 @@
 ## cds-hooks-protoにおけるPDDI-CDSサービスの位置づけ
 下図にcds-hooks-proto全体のイメージを示す。このうちPDDI-CDSサービス（pddi-cds-service-proto）は図中の赤枠で示す部分となる。
 
-![pddiCdsServiceInCdsHooksProto.png](../_resources/pddiCdsServiceInCdsHooksProto-2.png)
+![pddiCdsServiceInCdsHooksProto.png](./docs/imgs/pddiCdsServiceInCdsHooksProto.png)
 
 ## PDDI CDSサービス（Docker版）のインストール
 
