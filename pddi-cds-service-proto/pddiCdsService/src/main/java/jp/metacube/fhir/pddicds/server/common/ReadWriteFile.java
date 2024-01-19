@@ -4,10 +4,12 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.hl7.fhir.r4.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.r4.model.OperationOutcome.IssueType;
@@ -36,7 +38,13 @@ public class ReadWriteFile {
     // 内部ストレージからFHIRリソースファイル(JSON)を取得する
     String storageFolder = PddiCdsProperties.getInstance().getStorageFolderPath();
     String filename = storageFolder + "/" + resourceType + "-" + id + ".json";
-    return this.getResource(filename);
+    File fe = new File(filename);
+    IBaseResource ibr = null;
+    if (fe.exists()) {
+      ibr = this.getResource(filename);
+    }
+
+    return ibr;
   }
 
   /**
@@ -50,6 +58,7 @@ public class ReadWriteFile {
     IBaseResource rsc = null;
     // File file = new File(filename);
     FileInputStream is = new FileInputStream(filename);
+
     if (is != null) {
       // Fileの内容をStringとして取り出す
       IParser parser = FhirParser.getInstance().getJSONParser();
@@ -125,6 +134,7 @@ public class ReadWriteFile {
   public String writeFile(String fpath, String data) throws PddiCdsException {
     File wf = null;
     try {
+      // System.out.println(data);
       wf = new File(fpath);
       FileWriter fw = new FileWriter(wf);
       fw.write(data);
@@ -136,6 +146,59 @@ public class ReadWriteFile {
           IssueSeverity.FATAL,
           IssueType.EXCEPTION,
           "ファイル書き込み作業中に例外発生: file = " + fpath + ", exception = " + e.getMessage());
+    }
+
+    return wf.getAbsolutePath();
+  }
+
+  /**
+   * 文字列をファイル書き込み
+   *
+   * @param fpath 文字列の書き込み先となるファイルパス
+   * @param data 書き込む文字列
+   * @throws PddiCdsException
+   */
+  public String writeFile(String fpath, String data, String ftype) throws PddiCdsException {
+    File wf = null;
+    FileOutputStream os = null;
+    OutputStreamWriter osw = null;
+    try {
+      wf = new File(fpath);
+      os = new FileOutputStream(wf);
+      osw = new OutputStreamWriter(os, ftype);
+      osw.write(data);
+      osw.flush();
+      // osw.close();
+      // os.close();
+      // System.out.println(data);
+      // wf = new File(fpath);
+      // FileWriter fw = new FileWriter(wf);
+      // fw.write(data);
+      // fw.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+      throw new PddiCdsException(
+          500,
+          IssueSeverity.FATAL,
+          IssueType.EXCEPTION,
+          "ファイル書き込み作業中に例外発生: file = " + fpath + ", exception = " + e.getMessage());
+    } finally {
+      if (osw != null) {
+        try {
+          osw.close();
+        } catch (IOException e) {
+          // 内容をTomcatログに出力するがけで続行
+          e.printStackTrace();
+        }
+      }
+      if (os != null) {
+        try {
+          os.close();
+        } catch (IOException e) {
+          // 内容をTomcatログに出力するがけで続行
+          e.printStackTrace();
+        }
+      }
     }
 
     return wf.getAbsolutePath();

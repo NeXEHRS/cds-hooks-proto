@@ -45,6 +45,8 @@ RUN /opt/node-v20.10.0-linux-x64/bin/npm audit fix
 # pddiCdsService install
 COPY pddiCdsService /opt/pddiCdsService
 WORKDIR /opt/pddiCdsService
+RUN mkdir logs
+RUN mkdir works
 RUN ant
 RUN ant deploy
 

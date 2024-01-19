@@ -15,11 +15,11 @@
   "content": [
     {
       "contentType": "text/cql",
-      "url":"digoxin-cyclosporine-cds-logic-r4.cql"
+      "url":"digoxin-cyclosporine-cds-logic-r4-jp.cql"
     },
     {
       "contentType": "application/elm+json",
-      "url":"digoxin-cyclosporine-cds-logic-r4.json"
+      "url":"digoxin-cyclosporine-cds-logic-r4-jp.json"
     }
   ]
 }

@@ -1,0 +1,408 @@
+{
+  "resourceType": "PlanDefinition",
+  "id": "digoxin-cyclosporine-cds-sign",
+  "version": "1.0",
+  "name": "PlanDefinition___Digoxin_Cyclosporine_Recommendation_Workflow",
+  "title": "Digoxin Cyclosporine Recommendation",
+  "type": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/plan-definition-type",
+        "code": "eca-rule",
+        "display": "ECA Rule"
+      }
+    ]
+  },
+  "status": "draft",
+  "url": "http://hl7.org/fhir/ig/PDDI-CDS/PlanDefinition/digoxin-cyclosporine-cds-sign",
+  "topic": [
+    {
+      "text": "Digoxin Cyclosporine Prescribing"
+    }
+  ],
+  "library": [
+    "Library-digoxin-cyclosporine-cds-sign.json"
+  ],
+  "extension": [
+    {
+      "url": "http://localhost:2020/baseR4/StructureDefinition/pddi-cds-configuration-options",
+      "extension": [
+        {
+          "url": "code",
+          "valueString": "filter-out-repeated-alerts"
+        },
+        {
+          "url": "type",
+          "valueString": "boolean"
+        },
+        {
+          "url": "name",
+          "valueString": "Filter out repeated alerts"
+        },
+        {
+          "url": "description",
+          "valueString": "Only works if both this configuration option is set to 'true' and  cache-for-order-sign-filtering was set to 'true' in an order-select request. Uses information about this CDS call to filter aparently repititious card. Currently, this only supports filtering out cards that were triggered by the same knowledge artifact when the physician reference display, encounter id, and patient id match between the order-select and order-sign requests."
+        }
+      ]
+    },
+    {
+      "url": "http://localhost:2020/baseR4/StructureDefinition/pddi-cds-configuration-options",
+      "extension": [
+        {
+          "url": "code",
+          "valueString": "alert-non-serious"
+        },
+        {
+          "url": "type",
+          "valueString": "boolean"
+        },
+        {
+          "url": "name",
+          "valueString": "Alert for non-serious potential drug-drug interactions"
+        },
+        {
+          "url": "description",
+          "valueString": "Serious potential drug-drug interactions could result in death; requires hospitalization or extension of hospital stay; results in persistent or significant disability or incapacity; is life-threatening (see https://www.w3.org/2019/05/pddi/index.html). If set to True, this configuration option tells the CDS service to alerts for potential drug-drug interactions that do not meet this criterion."
+        }
+      ]
+    },
+    {
+      "url": "http://localhost:2020/baseDstu3/StructureDefinition/pddi-cds-configuration-options",
+      "extension": [
+        {
+          "url": "code",
+          "valueString": "show-evidence-support"
+        },
+        {
+          "url": "type",
+          "valueString": "boolean"
+        },
+        {
+          "url": "name",
+          "valueString": "Show evidence support"
+        },
+        {
+          "url": "description",
+          "valueString": "If this options is set to True, CDS response cards will provide more complete information about the evidence that supports the potential drug-drug interaction alert."
+        }
+      ]
+    }
+  ],
+  "relatedArtifact": [
+    {
+      "type": "documentation",
+      "display": "Potential Drug-Drug Interaction Clinical Decision Support",
+      "url": "http://hl7.org/fhir/ig/PDDI-CDS"
+    }
+  ],
+  "action": [
+    {
+      "trigger": [
+        {
+          "type": "named-event",
+          "name": "order-sign"
+        }
+      ],
+      "condition": [
+        {
+          "kind": "applicability",
+          "expression": {
+            "language": "text/cql",
+            "expression": "Inclusion Criteria"
+          }
+        }
+      ],
+      "action": [
+        {
+          "title": "ジゴキシン (製品) とシクロスポリン (製品) の間の潜在的な薬物間相互作用",
+          "description": "ジゴキシン毒性のリスクが増加する. リスクを評価し, 必要に応じて措置を講じる. ジゴキシンの毒性は深刻な可能性がある. 臨床結果には, 食欲不振, 吐き気, 嘔吐, 視覚的変化, 不整脈などが含まれる場合がある. この相互作用のメカニズムは, シクロスポリンによる P-糖タンパク質の阻害を介して媒介されるようである. P-糖タンパク質は, ジゴキシン流出の主要な輸送体である.",
+          "dynamicValue": [
+            {
+              "path": "action.title",
+              "expression": {
+                "language": "text/cql",
+                "expression": "Get Base Summary"
+              }
+            },
+            {
+              "path": "action.description",
+              "expression": {
+                "language": "text/cql",
+                "expression": "Get Base Detail"
+              }
+            },
+            {
+              "path": "activity.extension",
+              "expression": {
+                "language": "text/cql",
+                "expression": "Get Base Indicator"
+              }
+            }
+          ],
+          "action": [
+            {
+              "prefix": "診療",
+              "type": {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/action-type",
+                    "code": "create"
+                  }
+                ]
+              },
+              "description": "ジゴキシン処方者とのコミュニケーションをリクエストする",
+              "condition": [
+                {
+                  "kind": "applicability",
+                  "expression":{
+                    "language": "text/cql",
+                    "expression": "Is Context medication digoxin"
+				  }
+                }
+              ],
+              "definitionCanonical": "ActivityDefinition-ad201.json"
+            },
+            {
+              "prefix": "診療",
+              "type": {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/action-type",
+                    "code": "create"
+                  }
+                ]
+              },
+              "description": "シクロスポリン処方者とのコミュニケーションをリクエストする",
+              "condition": [
+                {
+                  "kind": "applicability",
+                  "expression": {
+                    "language": "text/cql",
+                    "expression": "Is Context medication cyclosporine"
+                  }
+                }
+              ],
+              "definitionCanonical": "ActivityDefinition-ad202.json"
+            },
+            {
+              "prefix": "ジゴキシンのキャンセル",
+              "type": {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/action-type",
+                    "code": "remove"
+                  }
+                ]
+              },
+              "description": "ジゴキシンのオーダーを中止する",
+              "condition": [
+                {
+                  "kind": "applicability",
+                  "expression": {
+                    "language": "text/cql",
+                    "expression": "Is Context medication digoxin"
+                  }
+                }
+              ]
+            },
+            {
+              "prefix": "シクロスポリンのキャンセル",
+              "type": {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/action-type",
+                    "code": "remove"
+                  }
+                ]
+              },
+              "description": "シクロスポリンのオーダーを中止する",
+              "condition": [
+                {
+                  "kind": "applicability",
+                  "expression":{
+                    "language": "text/cql",
+                    "expression": "Is Context medication cyclosporine"
+                  }
+                }
+              ]
+            },
+            {
+              "prefix": "ジゴキシンレベル",
+              "type": {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/action-type",
+                    "code": "create"
+                  }
+                ]
+              },
+              "description": "開始から 24 時間以内にジゴキシントラフをオーダーすること",
+              "condition": [
+                {
+                  "kind": "applicability",
+                  "expression": {
+                    "language": "text/cql",
+                    "expression": "Is new order for digoxin"
+                  }
+                }
+              ],
+              "definitionCanonical": "ActivityDefinition-ad203.json"
+            }
+          ]
+        },
+        {
+          "title": "患者の30日以内のジゴキシンレベルが0.9 ng/mL(SI: 1.2 nmol/L)未満である（またはない）",
+          "description": "シクロスポリンの投与を開始すると, ジゴキシンレベルが上昇すると予想される. 信頼できる血漿ジゴキシン濃度が正常範囲にない患者の場合は, リスクを上回る利益がある場合にのみ使用すること. 細心の注意と厳重な監視が必要です.",
+          "documentation": [
+            {
+              "type": "citation",
+              "display": "(Dorian et al. Clin Invest Med 1988; 11(2):108-112)",
+              "url": "http://hl7.org/fhir/ig/PDDI-CDS/citations#dorian1998"
+            },
+            {
+              "type": "citation",
+              "display": "(Dorian et al. Transplant Proc. 1987; 19(1):1825-1827)",
+              "url": "http://hl7.org/fhir/ig/PDDI-CDS/citations#dorian1987"
+            }
+          ],
+          "condition": [
+            {
+              "kind": "applicability",
+              "expression": {
+                "language": "text/cql",
+                "expression": "Is digoxin in prefetch"
+              }
+            }
+          ],
+          "dynamicValue": [
+            {
+              "path": "action.title",
+              "expression": {
+                "language": "text/cql",
+                "expression": "Get Card 2 Summary"
+              }
+            },
+            {
+              "path": "action.description",
+              "expression": {
+                "language": "text/cql",
+                "expression": "Get Card 2 Detail"
+              }
+            },
+            {
+              "path": "activity.extension",
+              "expression": {
+                "language": "text/cql",
+                "expression": "Get Card 2 Indicator"
+              }
+            }
+          ],
+          "action": [
+            {
+              "prefix": "ジゴキシンレベル",
+              "type": {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/action-type",
+                    "code": "create"
+                  }
+                ]
+              },
+              "description": "シクロスポリンの投与開始から 24 時間以内にジゴキシントラフをオーダーする",
+              "definitionCanonical": "ActivityDefinition-ad203.json"
+            },
+            {
+              "prefix": "New Digoxin",
+              "type": {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/action-type",
+                    "code": "create"
+                  }
+                ]
+              },
+              "description": "新しいオーダーでジゴキシンの用量を先制的に減らす",
+              "condition": [
+                {
+                  "kind": "applicability",
+                  "expression": {
+                    "language": "text/cql",
+                    "expression": "Need to reduce Digoxin dose"
+                  }
+                }
+              ],
+              "definitionCanonical": "ActivityDefinition-ad204.json"
+            }
+          ]
+        },
+        {
+          "title": "100 日以内に患者は電解質と血清クレアチニンのレベルを検査されており, カリウム保持性利尿薬やループ利尿薬を服用していない.",
+          "description": "(血清クレアチニン: レベルと日付) 低カリウム血症, 低マグネシウム血症, 高カルシウム血症は, ジゴキシンの毒性を増強する可能性がある. ジゴキシンの 50 ～ 70% は変化せずに尿中に排泄される. 腎機能の変化により, 血清濃度が上昇し, 毒性のリスクが増加する可能性がある.",
+          "documentation": [
+            {
+              "type": "citation",
+              "display": "(Lip et al. Postgrad Med J. 1993; 69(811):337)",
+              "url": "http://hl7.org/fhir/ig/PDDI-CDS/citations#lip1993"
+            },
+            {
+              "type": "citation",
+              "display": "(Digoxin-FDA [prescribing information] NDA 20405/S-004)",
+              "url": "http://hl7.org/fhir/ig/PDDI-CDS/citations#nda20405"
+            }
+          ],
+          "dynamicValue": [
+            {
+              "path": "action.title",
+              "expression": {
+                "language": "text/cql",
+                "expression": "Get Card 3 Summary"
+              }
+            },
+            {
+              "path": "action.description",
+              "expression": {
+                "language": "text/cql",
+                "expression": "Get Card 3 Detail"
+              }
+            },
+            {
+              "path": "activity.extension",
+              "expression": {
+                "language": "text/cql",
+                "expression": "Get Card 3 Indicator"
+              }
+            }
+          ],
+          "action": [
+            {
+              "prefix": "血清クレアチニン",
+              "type": {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/action-type",
+                    "code": "create"
+                  }
+                ]
+              },
+              "description": "血清クレアチニンのオーダー",
+              "definitionCanonical": "ActivityDefinition-ad205.json"
+            },
+            {
+              "prefix": "電解質パネル",
+              "type": {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/action-type",
+                    "code": "create"
+                  }
+                ]
+              },
+              "description": "電解液パネルのオーダー",
+              "definitionCanonical": "ActivityDefinition-ad206.json"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

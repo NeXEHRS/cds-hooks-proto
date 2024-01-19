@@ -20,6 +20,8 @@ import org.hl7.fhir.r4.model.Library;
 import org.hl7.fhir.r4.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.r4.model.OperationOutcome.IssueType;
 import org.hl7.fhir.r4.model.PlanDefinition;
+import org.hl7.fhir.r4.model.PlanDefinition.PlanDefinitionActionComponent;
+import org.hl7.fhir.r4.model.TriggerDefinition;
 import ca.uhn.fhir.parser.IParser;
 import jp.metacube.fhir.pddicds.server.common.FhirParser;
 import jp.metacube.fhir.pddicds.server.common.PddiCdsException;
@@ -51,15 +53,16 @@ public class CqlAnalysis {
   }
 
   /**
+   * CQL解析実行本体
+   *
    * @param cpp
-   * @return
+   * @return CQL解析結果
    * @throws PddiCdsException
    */
   public String exec() throws PddiCdsException {
     String cqlResult = null;
 
     // ストレージからPlanDefinitionを取得
-
     try {
       cpp.planDefinition = (PlanDefinition) rfr.getResource("PlanDefinition", cpp.id);
     } catch (FileNotFoundException e2) {
@@ -69,6 +72,68 @@ public class CqlAnalysis {
           IssueSeverity.FATAL,
           IssueType.NULL,
           "ストレージからPlanDefinition取得時の例外: " + e2.getMessage());
+    }
+
+    // cpp.idに対応するPlanDefinitionが得られなかった場合は、
+    // 本システムでは対応していないことを示す
+    // この場合空のカード配列を返す
+    if (cpp.planDefinition == null) {
+      throw new PddiCdsException(
+          200,
+          IssueSeverity.INFORMATION,
+          IssueType.NOTSUPPORTED,
+          "指定されたIDは本システムでは対応していません: id = " + cpp.id);
+    }
+
+    // 取得したPlanDefinition.acとCDSHooksRequest.hookとを比較する
+    // CDSHooksRequest.hook設定値がPlanDefinition.action.trigger.nameの集合に含まれる場合はOKだが
+    // そうでない場合はエラー処理とする
+    List<PlanDefinitionActionComponent> pdact = cpp.planDefinition.getAction();
+    if (pdact.size() > 0) {
+      PlanDefinitionActionComponent pdact0 = pdact.get(0);
+      List<TriggerDefinition> tgs = pdact0.getTrigger();
+      if (tgs.size() > 0) {
+        boolean match = false;
+        String tgstr = "[";
+        for (int i = 0; i < tgs.size(); i++) {
+          TriggerDefinition tg = tgs.get(i);
+          String tgname = tg.getName();
+          if (!StringUtils.isEmpty(tgname)) {
+            if (i == 0) {
+              tgstr += tgname;
+            } else {
+              tgstr += "," + tgname;
+            }
+            if (cpp.hook.equals(tgname)) {
+              match = true;
+            }
+          }
+        }
+        tgstr += "]";
+        if (!match) {
+          // CDSHooksRequest.hookはPlanDefinition.action.triggerと合致するものがない
+          throw new PddiCdsException(
+              400,
+              IssueSeverity.FATAL,
+              IssueType.NOTSUPPORTED,
+              "CDSHooksRequest.hook設定値はPlanDefinition.action.triggerと合致しません: id = "
+                  + cpp.id
+                  + ", CDSHooksRequest.hook = "
+                  + cpp.hook
+                  + ", PlanDefinition.action.trigger = "
+                  + tgstr);
+        }
+      } else {
+        // tg.size()==0の場合はエラー
+        throw new PddiCdsException(
+            500,
+            IssueSeverity.FATAL,
+            IssueType.NULL,
+            "PlanDefinition.action.triggerが存在しません: id = " + cpp.id);
+      }
+    } else {
+      throw new PddiCdsException(
+          500, IssueSeverity.FATAL, IssueType.NULL, "PlanDefinition.actionが存在しません: id = " + cpp.id);
     }
 
     // PlanDefinitionからLibrary取得
@@ -125,7 +190,7 @@ public class CqlAnalysis {
       String storage = PddiCdsProperties.getInstance().getStorageFolderPath();
       String fp = storage + "/" + uri;
       FileInputStream is = new FileInputStream(fp);
-      elm = rfr.readFile(is, null);
+      elm = rfr.readFile(is, "UTF-8");
     } catch (Exception e) {
       e.printStackTrace();
       throw new PddiCdsException(
@@ -170,7 +235,7 @@ public class CqlAnalysis {
     // String workpath = this.getClass().getClassLoader().getResource("works/").getPath();
     String workpath = pcp.getWorkFolderPath();
     String elmpath = workpath + "/" + elmName;
-    workfile[0] = rfr.writeFile(elmpath, elm);
+    workfile[0] = rfr.writeFile(elmpath, elm, "UTF-8");
     workfile[0] = workfile[0].replaceAll("\\\\", "/");
     // String elmss = this.adjustSimpleJson(elm);
     vc.put("elmJsonFile", workfile[0]);
@@ -180,7 +245,7 @@ public class CqlAnalysis {
     String bundleStr = jp.encodeResourceToString(bundle);
     String bdName = "cql-bundle-" + fuuid + ".json";
     String bdpath = workpath + "/" + bdName;
-    workfile[1] = rfr.writeFile(bdpath, bundleStr);
+    workfile[1] = rfr.writeFile(bdpath, bundleStr, "UTF-8");
     workfile[1] = workfile[1].replaceAll("\\\\", "/");
     vc.put("inputBundleFile", workfile[1]);
 
@@ -197,7 +262,7 @@ public class CqlAnalysis {
     // ファイル名は新たに作成したUUIDを基に作成
     String jsName = "cqlexec-" + fuuid + ".js";
     String jspath = workpath + "/" + jsName;
-    workfile[2] = rfr.writeFile(jspath, createjs);
+    workfile[2] = rfr.writeFile(jspath, createjs, "UTF-8");
     workfile[2] = workfile[2].replaceAll("\\\\", "/");
 
     //

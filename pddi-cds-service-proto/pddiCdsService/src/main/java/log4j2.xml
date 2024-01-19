@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+  <Appenders>
+    <RollingFile name="FILE" fileName="C:/work/metacube/CDSHooks/pddi-cds/pddiCdsService/logs/pddicds.log" 
+                          filePattern="C:/work/metacube/CDSHooks/pddi-cds/pddiCdsService/logs/pddicds-%d{yyyyMMdd-HH}0000-%i.log">
+      <PatternLayout pattern="%d{yyyy/MM/dd-HH:mm:ss} %c{1} - %m%n" charset="UTF-8" />
+      <Policies>
+        <OnStartupTriggeringPolicy />
+        <TimeBasedTriggeringPolicy />
+        <SizeBasedTriggeringPolicy size="10 MB" />
+      </Policies>
+      <DefaultRolloverStrategy max="10" />
+    </RollingFile>
+  </Appenders>
+  <Loggers>
+    <Root level="info">
+      <AppenderRef ref="FILE" />
+    </Root>
+  </Loggers>
+</Configuration>

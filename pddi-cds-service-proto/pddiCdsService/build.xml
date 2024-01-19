@@ -62,7 +62,10 @@
         	  tofile="src/main/javascript/lib/fhir-valueset-service.js" overwrite="true">
                     <filterset refid="server.filters"></filterset>
         </copy> 
-        <!--copy file="src/main/java/logback.xml" tofile="build/classes/logback.xml"/-->
+        <copy file="src/main/java/log4j2.xml.template" tofile="src/main/java/log4j2.xml" overwrite="true">
+            <filterset refid="server.filters"></filterset>
+        </copy> 
+        <copy file="src/main/java/log4j2.xml" tofile="WebContent/WEB-INF/classes/log4j2.xml" overwrite="true" />
     </target>
 
 	<!--

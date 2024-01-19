@@ -15,11 +15,11 @@
   "content": [
     {
       "contentType": "text/cql",
-      "url": "warfarin-nsaids-cds-logic-r4.cql"
+      "url": "warfarin-nsaids-cds-logic-r4-jp.cql"
     },
     {
       "contentType": "application/elm+json",
-      "url": "warfarin-nsaids-cds-logic-r4.json"
+      "url": "warfarin-nsaids-cds-logic-r4-jp.json"
     }
   ]
 }

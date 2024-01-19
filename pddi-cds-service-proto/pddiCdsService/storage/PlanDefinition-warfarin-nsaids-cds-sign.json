@@ -91,7 +91,7 @@
   "relatedArtifact": [
     {
       "type": "documentation",
-      "display": "Warfarin-NSAIDs clinical decision support algorithm",
+      "display": "ワルファリン-NSAIDs 臨床意思決定支援アルゴリズム",
       "url": "https://ddi-cds.org/warfarin-nsaids/"
     }
   ],
@@ -114,8 +114,8 @@
       ],
       "action": [
         {
-          "title": "Potential Drug-Drug Interaction between warfarin (product) and NSAID (product)",
-          "description": "Topical diclofenac has relatively low systemic absorption; in one study a topical gel (16 g/day) produced about 6% of the absorption seen with systemic administration of 150 mg/day. A higher than recommended dose of topical gel (48 g/day) produced 20% of a systemic dose of diclofenac.",
+          "title": "ワルファリン (製品) と NSAID (製品) の間の潜在的な薬物間相互作用",
+          "description": "局所ジクロフェナクの全身吸収は比較的低い. ある研究では, 局所用ジェル（16 g/日）は, 150 mg/日の全身投与で見られる吸収の約 6% をもたらした. 局所ゲルの推奨用量（48 g/日）よりも多い量では, 全身用量の 20% のジクロフェナクが生成された.",
           "condition": [
             {
               "kind": "applicability",
@@ -143,13 +143,13 @@
           ],
           "action": [
             {
-              "prefix": "No special precautions"
+              "prefix": "特別な注意事項はない"
             }
           ]
         },
         {
-          "title": "Potential Drug-Drug Interaction between warfarin (product) and NSAID (product)",
-          "description": "Increased risk of bleeding. \nBleeding is a serious potential clinical consequence because it can result in death, life-threatening hospitalization, and disability. \nNon-steroidal anti-inflammatory drugs (NSAIDs) have antiplatelet effects which increase the bleeding risk when combined with oral anticoagulants such as warfarin. The antiplatelet effect of NSAIDs lasts only as long as the NSAID is present in the circulation, unlike aspirin�fs antiplatelet effect, which lasts for up to 2 weeks after aspirin is discontinued. NSAIDs also can cause peptic ulcers and most of the evidence for increased bleeding risk with NSAIDs plus warfarin is due to upper gastrointestinal bleeding (UGIB). \nunknown. \n unknown.",
+          "title": "ワルファリン (製品) と NSAID (製品) の間の潜在的な薬物間相互作用",
+          "description": "出血のリスクが増加する. 出血は, 死亡, 生命を脅かす入院, 障害を引き起こす可能性があるため, 重大な臨床結果を引き起こす可能性がある. 非ステロイド性抗炎症薬 (NSAID) には抗血小板作用があり, ワルファリンなどの経口抗凝固薬と組み合わせると出血リスクが高まる. NSAID の抗血小板効果は, アスピリンの抗血小板効果がアスピリン中止後 2 週間持続するのとは異なり, NSAID が循環中に存在する限り持続する. NSAID は消化性潰瘍を引き起こす可能性もあり, NSAID とワルファリンの併用による出血リスクの増加に関する証拠のほとんどは上部消化管出血 (UGIB) によるもの.",
           "condition": [
             {
               "kind": "applicability",
@@ -177,7 +177,7 @@
           ],
           "action": [
             {
-              "prefix": "Assess risk and take action if necessary.",
+              "prefix": "リスクを評価し、必要に応じて措置を講じること.",
               "type": {
                 "coding": [
                   {
@@ -186,7 +186,7 @@
                   }
                 ]
               },
-              "description": "If the NSAID is being used as an analgesic or antipyretic, it would be prudent to use an alternative such as acetaminophen. In some people, acetaminophen can increase the anticoagulant effect of warfarin, so monitor the INR if acetaminophen is used in doses over 2 g/day for a few days. For more severe pain consider short-term opioids in place of the NSAID."
+              "description": "凝固作用を高める可能性があるため, アセトアミノフェンを 2 g/日を超える用量で数日間使用する場合は, INR を監視すること. より重度の痛みの場合は, NSAID の代わりに短期オピオイドを検討すること."
             },
             {
               "prefix": "Substitute NSAID (product) with APAP (product).",
@@ -198,7 +198,7 @@
                   }
                 ]
               },
-              "description": "Order for APAP <2g per day (APAP 500 mg every 4-6 hours prn).",
+              "description": "APAP を 1 日あたり 2g 未満でオーダー（APAP 500 mg を 4 ～ 6 時間ごとに）.",
               "definitionCanonical": "ActivityDefinition-ad101.json",
               "dynamicValue": [
                 {
@@ -220,7 +220,7 @@
                   }
                 ]
               },
-              "description": "Order for APAP <2g per day (APAP 500 mg every 4-6 hours prn).",
+              "description": "APAP を 1 日あたり 2g 未満でオーダー（APAP 500 mg を 4 ～ 6 時間ごとに）.",
               "definitionCanonical": "ActivityDefinition-ad102.json",
               "dynamicValue": [
                 {
@@ -235,8 +235,8 @@
           ]
         },
         {
-          "title": "Patient is (not) taking a proton pump inhibitor (product) or misoprostol (product).",
-          "description": "Proton pump inhibitors and misoprostol may reduce the risk of UGIB in patients receiving NSAIDs and warfarin.",
+          "title": "患者はプロトンポンプ阻害剤（製品）またはミソプロストール（製品）を服用している（または服用していない）.",
+          "description": "プロトンポンプ阻害剤とミソプロストールは、NSAID とワルファリンを受けている患者における UGIB のリスクを軽減する可能性がある.",
           "condition": [
             {
               "kind": "applicability",
@@ -271,7 +271,7 @@
           ],
           "action": [
             {
-              "prefix": "Assess risk and take action if necessary.",
+              "prefix": "リスクを評価し、必要に応じて措置を講じること.",
               "dynamicValue": [
                 {
                   "path": "action.label",
@@ -285,8 +285,8 @@
           ]
         },
         {
-          "title": "Patient is (not) 65 y/o and/or does (not) have a history of upper gastrointestinal bleed",
-          "description": "Patients with a history of UGIB or peptic ulcer may have an increased risk of UGIB from this interaction. The extent to which older age is an independent risk factor for UGIB due to these interactions is not firmly established, but UGIB in general is known to increase with age",
+          "title": "患者は65歳を超えている（いない）、および/または上部消化管出血の病歴がある（ない）",
+          "description": "UGIB または消化性潰瘍の病歴のある患者は, この相互作用により UGIB のリスクが増加する可能性があります. これらの相互作用により, 高齢がUGIBの独立した危険因子となる程度はしっかりと確立されていないが, 一般にUGIBは年齢とともに増加することが知られている.",
           "condition": [
             {
               "kind": "applicability",
@@ -321,7 +321,7 @@
           ],
           "action": [
             {
-              "prefix": "Assess risk and take action if necessary.",
+              "prefix": "リスクを評価し、必要に応じて措置を講じること.",
               "dynamicValue": [
                 {
                   "path": "action.label",
@@ -335,8 +335,8 @@
           ]
         },
         {
-          "title": "Patient is (not) concomitantly taking systemic corticosteroids, aldosterone antagonist, or high dose or multiple NSAIDs",
-          "description": "Both corticosteroids and aldosterone antagonists have been shown to subsetantially increase the risk of UGIB in patients on NSAIDs, with relative risks of 12.8 and 11 respectively compared to a risk of 4.3 with NSAIDs alone (Masclee et al. Gastroenterology 2014; 147:784-92.)",
+          "title": "患者は全身性コルチコステロイド, アルドステロン拮抗薬, または高用量または複数のNSAIDを同時に服用している（または服用していない）",
+          "description": "コルチコステロイドとアルドステロン拮抗薬はどちらも, NSAIDs を服用している患者の UGIB のリスクを大幅に増加させることが示されており, 相対リスクはそれぞれ 12.8 と 11 であり, NSAIDs 単独の場合のリスクは 4.3 である. (Masclee et al. Gastroenterology 2014; 147:784-92.)",
           "condition": [
             {
               "kind": "applicability",
@@ -371,7 +371,7 @@
           ],
           "action": [
             {
-              "prefix": "Assess risk and take action if necessary.",
+              "prefix": "リスクを評価し、必要に応じて措置を講じること.",
               "dynamicValue": [
                 {
                   "path": "action.label",

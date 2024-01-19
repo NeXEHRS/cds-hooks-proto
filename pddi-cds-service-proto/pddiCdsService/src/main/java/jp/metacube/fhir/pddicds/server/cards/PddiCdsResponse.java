@@ -8,11 +8,15 @@ import java.util.List;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 import org.apache.commons.lang3.StringUtils;
+import org.hl7.fhir.r4.model.OperationOutcome;
 import org.hl7.fhir.r4.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.r4.model.OperationOutcome.IssueType;
+import org.hl7.fhir.r4.model.OperationOutcome.OperationOutcomeIssueComponent;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import ca.uhn.fhir.parser.IParser;
 import io.swagger.model.CDSResponse;
 import io.swagger.model.Card;
+import jp.metacube.fhir.pddicds.server.common.FhirParser;
 import jp.metacube.fhir.pddicds.server.common.ParameterInitiator;
 import jp.metacube.fhir.pddicds.server.common.PddiCdsException;
 import jp.metacube.fhir.pddicds.server.preparation.CqlPreprocessing;
@@ -21,10 +25,12 @@ import jp.metacube.fhir.pddicds.server.preparation.CqlPreprocessing;
 public class PddiCdsResponse {
 
   private ParameterInitiator pi = null;
+  private IParser jp = null;
 
   /** */
   public PddiCdsResponse() {
     pi = ParameterInitiator.getInstance();
+    jp = FhirParser.getInstance().getJSONParser();
   }
 
   /**
@@ -49,23 +55,33 @@ public class PddiCdsResponse {
     // Content-Type
     rb.header("Content-Type", "application/json");
 
-    // X-Request-Id
-    rb.header("X-Request-Id", cpp.hookInstance);
-
-    // X-Correlation-Id
-    rb.header("X-Correlation-Id", cpp.uuid);
+    if (cpp != null) {
+      // X-Request-Id
+      if (!StringUtils.isEmpty(cpp.hookInstance)) {
+        rb.header("X-Request-Id", cpp.hookInstance);
+      }
+      // X-Correlation-Id
+      rb.header("X-Correlation-Id", cpp.uuid);
+    }
 
     // レスポンス本体
-    CDSResponse cr = new CDSResponse();
-    cr.setCards(cards);
     String jsonStr;
-    try {
-      jsonStr = pi.objectMapper.writeValueAsString(cr);
-    } catch (JsonProcessingException e) {
-      e.printStackTrace();
-      throw new PddiCdsException(
-          500, IssueSeverity.FATAL, IssueType.EXCEPTION, "CDSレスポンス作成時に例外発生: " + e.getMessage());
+    if (cards.size() == 0) {
+      // カードがない場合は{"cards":[]}を返す
+      jsonStr = "{\"cards\":[]}";
+    } else {
+      // カードが存在する場合の処理
+      CDSResponse cr = new CDSResponse();
+      cr.setCards(cards);
+      try {
+        jsonStr = pi.objectMapper.writeValueAsString(cr);
+      } catch (JsonProcessingException e) {
+        e.printStackTrace();
+        throw new PddiCdsException(
+            500, IssueSeverity.FATAL, IssueType.EXCEPTION, "CDSレスポンス作成時に例外発生: " + e.getMessage());
+      }
     }
+
     rb.entity(jsonStr);
 
     return rb.build();
@@ -90,14 +106,43 @@ public class PddiCdsResponse {
     rb.header("Date", nowf);
 
     // Content-Type
-    // rb.header("Content-Type", "application/json");
+    rb.header("Content-Type", "application/json");
 
     // X-Request-Id
-    if (!StringUtils.isEmpty(cpp.hookInstance)) {
-      rb.header("X-Request-Id", cpp.hookInstance);
+    if (cpp != null) {
+      if (!StringUtils.isEmpty(cpp.hookInstance)) {
+        rb.header("X-Request-Id", cpp.hookInstance);
+      }
+      // X-Correlation-Id
+      rb.header("X-Correlation-Id", cpp.uuid);
     }
-    // X-Correlation-Id
-    rb.header("X-Correlation-Id", cpp.uuid);
+
+    // (一応付加)
+    // エラーレスポンス本体
+    String jsonStr;
+    OperationOutcome oo = pce.getOperationOutcome();
+    try {
+      if (cpp != null) {
+        oo.setId(cpp.uuid);
+      }
+      jsonStr = jp.encodeResourceToString(oo);
+      // jsonStr = pi.objectMapper.writeValueAsString(oo);
+    } catch (Exception e) {
+      e.printStackTrace();
+      // 手動でJSON形式OperationOutcomeリソースを作成
+      String ootemp =
+          "{\"resourceType\": \"OperationOutcome\",\"issue\":[{\"severity\":\"%s\",\"code\":\"%s\",\"details\":{\"text\":\"%s\"}}]}";
+      OperationOutcomeIssueComponent iss = oo.getIssueFirstRep();
+      jsonStr =
+          String.format(
+              ootemp,
+              iss.getSeverity().toCode(),
+              iss.getCode().toCode(),
+              iss.getDetails().getText());
+      // throw new PddiCdsException(
+      //    500, IssueSeverity.FATAL, IssueType.EXCEPTION, "CDSレスポンス作成時に例外発生: " + e.getMessage());
+    }
+    rb.entity(jsonStr);
 
     return rb.build();
   }

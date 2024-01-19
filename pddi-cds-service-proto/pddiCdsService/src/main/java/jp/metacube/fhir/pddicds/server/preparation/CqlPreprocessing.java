@@ -73,7 +73,7 @@ public class CqlPreprocessing {
     this.execute(id, requestBody, hsr);
   }
 
-  private void execute(String id, String requestBody, HttpServletRequest hsr)
+  public void execute(String id, String requestBody, HttpServletRequest hsr)
       throws PddiCdsException {
     // id
     this.id = id;
@@ -156,6 +156,14 @@ public class CqlPreprocessing {
       IBaseResource rsc = fp.parseResource(draftOrders.toString());
       if (rsc instanceof Bundle) {
         List<BundleEntryComponent> entries = ((Bundle) rsc).getEntry();
+        // Bundle.entryが0件の場合、エラーを出す
+        if (entries.size() == 0) {
+          throw new PddiCdsException(
+              400,
+              IssueSeverity.FATAL,
+              IssueType.INVALID,
+              "CDSHookRequest.context.draftOrders に FHIR Bundle Resourceが含まれていますが、そのBundle.entryはFHIRリソースがありません.");
+        }
         // context.draftOrders以下のBundleリソースに含まれていたことを示す
         // 記号をResource.extensionに追加する
         for (int i = 0; i < entries.size(); i++) {
