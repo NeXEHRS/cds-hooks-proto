@@ -54,13 +54,13 @@ Dockerのインストール方法はWeb上にある解説記事を参照のこ�
 ~~~text
 POST　http://[host]:18080/[serviceName]/[id]
 ~~~
-ただし、
-**[host]**：
-　pddiCdsServiceを組み込んだDockerコンテナを動かしているマシンのホスト名またはIPアドレス。CDSHooksリクエスト送信元がこのマシンと同一であれば「localhost」を使用してもよい。
-**[serviceName]**：
-PDDI-CDSサービスのサーバ名。上記インストール手順2でのservlet.nameの設定値となる（servlet.name＝order-signの場合、 [serviceName]＝order-signとなる）。　
-**[id]**：
-CDSHooksリクエストに応じて以下の値を用いる
+ただし、  
+**[host]**：  
+　pddiCdsServiceを組み込んだDockerコンテナを動かしているマシンのホスト名またはIPアドレス。CDSHooksリクエスト送信元がこのマシンと同一であれば「localhost」を使用してもよい。  
+**[serviceName]**：  
+PDDI-CDSサービスのサーバ名。上記インストール手順2でのservlet.nameの設定値となる（servlet.name＝order-signの場合、 [serviceName]＝order-signとなる）。　  
+**[id]**：  
+CDSHooksリクエストに応じて以下の値を用いる  
 - Warfarin＋NSAID, order-signの場合
 　[id] = warfarin-nsaids-cds-sign
 - Digoxin+Cyclosporine, order-signの場合
