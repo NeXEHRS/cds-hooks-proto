@@ -1,5 +1,5 @@
-# CDS-HOOKS-SERVER(NexTHERS-POC)
-このプロジェクトは「CDS Hooks(プロトタイプ版)実証」[NexTHERS-POC](https://www.nexehrs-cpc.jp/)によるCDS実装検証モデルです。
+# CDS-HOOKS-SERVER(NeXEHRS-POC)
+このプロジェクトは「CDS Hooks(プロトタイプ版)実証」[NeXEHRS-POC](https://www.nexehrs-cpc.jp/)によるCDS実装検証モデルです。
 
 CDS Hookは、ベンダーに依存しないリモート意思決定支援標準です。 このリポジトリは、CDS Hooks プロジェクトの仕様と Web サイトの両方として機能します。
 ## Get Started
