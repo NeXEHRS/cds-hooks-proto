@@ -25,8 +25,10 @@ Prisma Studio is up on http://localhost:7777
 操作が完了したら「ctrl」+「C」でprisma studioを停止してください。
 
 ![prisama studio](img/database01-0001.png)
-   - ***Services*** CDSサービスリストです。このテーブルの[]内容が
-   - ***Services*** CDSサービスリストです
+   - ***Services*** CDSサービスリストです。このテーブルの[enable=true]リストがDiscovary(/cds-selecct)に対するレスポンスとして返却されます。
+   - ***Prefetch*** Servicesに紐づくPrefetchリクエストのリストです。Prefetchは複数のサービスに対して適用できます。
+   - ***Extention*** Servicesに紐づくExtentionリクエストのリストです。Extention内容は任意です。
+   - ***Cdshost*** Servicesに紐づくCDSリクエストのリレー先ホストを指定します。指定が無い場合はカレントホストで処理を行います。
 3. データベース構造。
    
 Serviceテーブルを主テーブルとして、PrefetchとExtentionテーブルが1対多の関係で存在します。PrefetchとExtentionが存在する場合それぞれのテーブルのlabelとparametaがkeyとvalueの配列の組合せで返却されます。また、Cdshostに設定がある場合、このCDSサービスは対象レコードに記録されているホストへその内容をリレーします。以下は各テーブルの関連を表したER図です。
