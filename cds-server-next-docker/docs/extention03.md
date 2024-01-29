@@ -43,7 +43,7 @@ DIscoveryによって得られたpatient-viewサービス
 ```
 CDSサービスは受け取ったデータ内に要求したprefetchがみつからず、そのかわりにfhirAuthorizationdの提供があったのでこれを使ってfhirServerにアクセスしPatientリソースを取得した。よって返却されたカードには
 
-"summary": "診察中：Lopez Carniceros",
+"summary": "診察中：東京　太郎",
 
 と患者氏名を特定したカードを返却できた。
 
@@ -51,7 +51,7 @@ CDSサービスは受け取ったデータ内に要求したprefetchがみつか
 {
     "cards": [
         {
-            "summary": "診察中：Lopez Carniceros",
+            "summary": "診察中：東京　太郎",
             "indicator": "info",
             "uuid": "dfc61a6b-8555-4cfd-aa1a-ffcf6c77a025",
             "source": {
@@ -96,13 +96,13 @@ CDSサービスはprefetchからこのカードを作成する為に必要な患
         },
         "name": [
             {
-                "family": "Alexander",
+                "family": "花子",
                 "given": [
                     "Bob"
                 ]
             }
         ],
-        "gender": "male",
+        "gender": "東京",
         "birthDate": "2017-09-05",
         "active": true
     }
@@ -115,7 +115,7 @@ CDSサービスからの応答例
 {
     "cards": [
         {
-            "summary": "診察中：Alexander Bob",
+            "summary": "診察中：東京　花子",
             "indicator": "info",
             "uuid": "cf5ffaa0-078e-494e-a4fd-5e9ce98bebf2",
             "source": {
