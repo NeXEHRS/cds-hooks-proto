@@ -25,7 +25,7 @@ Prisma Studio is up on http://localhost:7777
 操作が完了したら「ctrl」+「C」でprisma studioを停止してください。
 
 ![prisama studio](img/database01-0001.png)
-　-Services：あああ
+　- Services：あああ
 3. データベース構造。
    
 Serviceテーブルを主テーブルとして、PrefetchとExtentionテーブルが1対多の関係で存在します。PrefetchとExtentionが存在する場合それぞれのテーブルのlabelとparametaがkeyとvalueの配列の組合せで返却されます。また、Cdshostに設定がある場合、このCDSサービスは対象レコードに記録されているホストへその内容をリレーします。以下は各テーブルの関連を表したER図です。
