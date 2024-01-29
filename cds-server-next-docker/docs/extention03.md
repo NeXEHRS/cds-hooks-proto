@@ -96,13 +96,13 @@ CDSサービスはprefetchからこのカードを作成する為に必要な患
         },
         "name": [
             {
-                "family": "花子",
+                "family": "東京",
                 "given": [
-                    "Bob"
+                    "花子"
                 ]
             }
         ],
-        "gender": "東京",
+        "gender": "female",
         "birthDate": "2017-09-05",
         "active": true
     }
