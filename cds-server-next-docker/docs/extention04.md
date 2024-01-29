@@ -25,22 +25,22 @@
         - （略）
         - src/
             - app/
-                - [slug]/　←任意のコンテキストパス（以下同じ）
+                - [slug]/　←任意のコンテキストパス（以下同じ※）
                 - <span style="color: skyblue; ">cds-services/
                     - route.ts
-                    - [slug]/
+                    - [slug]/　←※
                         - route.ts
                 - <span style="color: skyblue; ">order-select/
                     - route.ts
-                    - [slug]/
+                    - [slug]/　←※
                         - route.ts
                 - <span style="color: skyblue; ">order-sgin/
                     - route.ts
-                    - [slug]/
+                    - [slug]/　←※
                         - route.ts
                 - <span style="color: blue; ">demo-hook/
                     - route.ts
-                    - [slug]/
+                    - [slug]/　←※
                         - route.ts
                 - favicon.ico
                 - globals.css
