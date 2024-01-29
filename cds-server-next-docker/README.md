@@ -54,5 +54,3 @@ CDS サービスは、CDS クライアントが要求する推奨事項を計算
 ジゴキシン (ジゴキシン 0.2 MG 経口カプセル) とシクロスポリン (シクロスポリン 100 MG) の間の潜在的な薬物相互作用
 
 
-- Get Started
-    - [Docker仮想コンテナでのビルド方法](./cds-server-next-docker/docs/build_docker.md)
