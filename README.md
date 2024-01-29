@@ -32,4 +32,4 @@
 		- [order-sign/warfarin-nsaids-cds-sign](./cds-server-next-docker/docs/api_005.md)
 		- [/order-sign/digoxin-cyclosporine-cds-sign](./cds-server-next-docker/docs/api_006.md)
 
-## [pddi-cds-service-proto](./pddi-cds-service-proto/INSTALL-docker.txt)
+## [pddi-cds-service-proto](./pddi-cds-service-proto/README.md)
