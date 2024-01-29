@@ -25,7 +25,7 @@ Prisma Studio is up on http://localhost:7777
 操作が完了したら「ctrl」+「C」でprisma studioを停止してください。
 
 ![prisama studio](img/database01-0001.png)
-   - ***Services*** CDSサービスリストです。
+   - ***Services*** CDSサービスリストです。このテーブルの[]内容が
    - ***Services*** CDSサービスリストです
 3. データベース構造。
    
