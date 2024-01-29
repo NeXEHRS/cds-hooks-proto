@@ -25,22 +25,22 @@
         - （略）
         - src/
             - app/
-                - [slug]/
+                - [slug]/　←任意のコンテキストパス
                 - <span style="color: skyblue; ">cds-services/
                     - route.ts
-                    - [slug]/
+                    - [slug]/　←任意のコンテキストパス
                         - route.ts
                 - <span style="color: skyblue; ">order-select/
                     - route.ts
-                    - [slug]/
+                    - [slug]/　←任意のコンテキストパス
                         - route.ts
                 - <span style="color: skyblue; ">order-sgin/
                     - route.ts
-                    - [slug]/
+                    - [slug]/　←任意のコンテキストパス
                         - route.ts
                 - <span style="color: blue; ">demo-hook/
                     - route.ts
-                    - [slug]/
+                    - [slug]/　←任意のコンテキストパス
                         - route.ts
                 - favicon.ico
                 - globals.css
@@ -50,7 +50,7 @@
                 - interfaces/
                     - <span style="color: magenta; ">_interfaces-list.ts
                 - <span style="color: plum; ">cds-services/
-                    - patient-greeter.ts
+                    - patient-greeter.ts　　←サービスプログラム実体（以下同じ）
                     - static-patient-greeter.ts
                 - <span style="color: plum; ">order-select/
                     - digoxin-cyclosporine-cds-select.ts
