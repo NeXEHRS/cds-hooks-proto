@@ -50,7 +50,7 @@ Serviceテーブルを主テーブルとして、PrefetchとExtentionテーブ�
 
 6. その他
 
-Gitリポジトリから得られるデフォルトアーカイブには軽量のSQLiteを実装していますが、DBMSの種類は何でも構いません。実装のNext.jsフレームワークではPrismaというオープンソースのORM(Object-relational mapping)ツールが利用さあれていますが、対応できるDBMSはPostgreSQL、MySQL、SQL Server、SQLite（実装済）、MongoDB、CockroachDBなど多種のDBMSが利用できます
+Gitリポジトリから得られるデフォルトアーカイブには軽量のSQLiteを実装していますが、DBMSの種類は何でも構いません。実装のNext.jsフレームワークではPrismaというオープンソースのORM(Object-relational mapping)ツールが利用されていますが、対応できるDBMSはPostgreSQL、MySQL、SQL Server、SQLite（実装済）、MongoDB、CockroachDBなど多種のDBMSが利用できます
 
 [https://www.prisma.io/docs/reference/database-reference/supported-databases](https://www.prisma.io/docs/reference/database-reference/supported-databases)
 
