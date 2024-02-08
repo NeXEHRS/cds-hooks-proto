@@ -1,5 +1,6 @@
 ### ローカル環境でのビルド方法
 ローカル環境に本プロジェクトを構築します。macOS,Windows,LinuxそれぞれのOSで作業は同じです。この場合もgitリポジトリは同じですが、Docker関連ファイルは利用せず、ダウンロードしたアーカイブに含まれる「cds-hook-server/」をルートディレクトリとしてプロジェクトをビルドします。
+ローカル環境でプロジェクトを構築した場合VSCodeなどでソースを確認したり直接プログラミングを行って機能追加などができるようになります。
 
 [Node.js](https://nodejs.org/en)実行環境は必須です。(本プロジェクトは18.xLTS版を利用しています。)
 Node環境のインストール方法は[https://github.com/nodesource/distributions](https://github.com/nodesource/distributions)を参照し最新のLTS版を利用するようにしてください。（多くのWebサイトの方法は非推奨となっています。）　　
