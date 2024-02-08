@@ -5,7 +5,7 @@ CDSクライアントはCDSサービスに対して公開されているDeicover
 GET https://example.com/cds-services
 ```
 ### リクエストサンプル
->[GET] curl --location 'https://example.com/cds-services'
+>[GET] curl --location 'http://localhost:3000/cds-services'
 
 ### レスポンスサンプル
 

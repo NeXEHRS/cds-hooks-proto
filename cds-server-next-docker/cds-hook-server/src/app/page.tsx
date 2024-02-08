@@ -5,18 +5,23 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          NexTHERS
+          このプロジェクトは 「<a href="https://www.nexehrs-cpc.jp/" target='_blank'>NeXEHRS</a>-POC部会」によるCDSサービス実装検証モデルです。
         </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          
-        </div>
+        <div className="relative flex place-items-center before:absolute ">
+        <h3>
+        <a href="https://github.com/NeXEHRS/cds-hooks-proto" className="font-bold">GitHubリポジトリ</a>
+        </h3>
       </div>
+      </div>
+      
+      
 
       <div className="relative flex place-items-center before:absolute ">
         <h1>
         <a href="/cds-service" className="font-bold">CDS Discovery(/cds-service)</a>
         </h1>
       </div>
+
       
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono lg:flex">
  

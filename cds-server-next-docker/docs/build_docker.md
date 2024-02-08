@@ -85,3 +85,5 @@ command: /bin/sh -c 'npm run dev'
 [/cds-next-on-docker]> docker-compose stop
 [+] Stopping 1/1
  ✔ Container cds-server-next-docker-hook-1  Stopped
+```
+ロカール環境から接続して起動を確認:[http://localhost:3000](http://localhost:3000)

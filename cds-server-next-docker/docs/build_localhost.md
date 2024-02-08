@@ -62,7 +62,7 @@ generator client {
 [/cds-hook-server]> npm install @prisma/client@dev prisma@dev
 ```
 
-6. サーバー起動
+6. サーバー起動:[http://localhost:3000](http://localhost:3000)
 ```bash
 [/cds-hook-server]> npm run dev
 > cds-hook@0.1.0 dev
