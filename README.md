@@ -8,6 +8,9 @@ CDS Hookは、ベンダーに依存しないリモート意思決定支援標準
 
 <center><img src="cds-server-next-docker/docs/img/cds-hook-img.png" width="70%" ></center> 
 
+### 機能イメージ・処理フロー
+<center><img src="cds-server-next-docker/docs/img/cds-hook-img0.png" width="70%" ></center> 
+
 ## [cds-hooks-client](./cds-hooks-client/README.md)
 - 動作環境
 - フォルダ構成
