@@ -1,13 +1,11 @@
-# CDS-HOOKS-SERVER(NeXEHRS-POC)
-このプロジェクトは「CDS Hooks(プロトタイプ版)実証」[NeXEHRS-POC](https://www.nexehrs-cpc.jp/)によるCDS実装検証モデルです。
-
-CDS Hookは、ベンダーに依存しないリモート意思決定支援標準です。 このリポジトリは、CDS Hooks プロジェクトの仕様と Web サイトの両方として機能します。
 
 
+# CDS サービス cds-hooks-server
+## cds-hooks-protoにおけるcds-hooks-serverサービスの位置づけ
+下図にcds-hooks-proto全体のイメージを示す。このうちcds-hooks-serverサービスは図中の赤枠で示す部分となる。
+<center><img src="../cds-server-next-docker//docs/img/cds-hook-img2.png" width="70%" ></center> 
 
-## CDS Hooksサーバの開始方法
-
-<center><img src="./docs/img/cds-hook-img2.png" width="70%" ></center> 
+## CDS Hooks Serverの開始方法
 
 ### [Docker仮想コンテナでのビルド方法](./docs/build_docker.md)
 Docker仮想コンテナを使ってプロジェクトをビルドします。Dockerを利用する事で様々なOS上で安全にプロジェクトをビルドする事が可能です。
