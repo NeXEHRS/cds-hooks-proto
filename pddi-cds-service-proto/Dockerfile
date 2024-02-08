@@ -1,4 +1,6 @@
-FROM almalinux:latest
+#FROM almalinux:latest
+#AppleSelocon
+FROM --platform=linux/amd64 almalinux:latest 
 
 # java(OpenJDK), wget
 RUN dnf install -y java-17-openjdk wget
