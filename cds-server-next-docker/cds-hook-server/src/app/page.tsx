@@ -9,7 +9,7 @@ export default function Home() {
         </p>
         <div className="relative flex place-items-center before:absolute ">
         <h3>
-        <a href="https://github.com/NeXEHRS/cds-hooks-proto" className="font-bold">GitHubリポジトリ</a>
+        <a href="https://github.com/NeXEHRS/cds-hooks-proto" className="font-bold" target='_blank'>GitHubリポジトリ</a>
         </h3>
       </div>
       </div>
