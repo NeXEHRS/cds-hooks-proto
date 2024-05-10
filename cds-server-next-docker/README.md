@@ -10,8 +10,7 @@
 Nextバージョンアップ方法
 ```bash
 #
-> abc
-'''
+```
 
 
 ## cds-hooks-protoにおけるcds-hooks-serverサービスの位置づけ
