@@ -9,7 +9,14 @@
 
 Nextバージョンアップ方法
 ```bash
-#
+※ cds-hooks-proto/cds-server-next-docker/cds-hook-server/へ移動します。
+> cds-hooks-proto/cds-server-next-docker/cds-hook-server/
+※ 下記のコマンドでアップデートを実行します。これにより最新版へアップグレートされます。
+>npm i next@latest
+[確認方法]
+cds-hooks-proto/cds-server-next-docker/cds-hook-server/package.json
+を確認して13行目あたりのnextの行でバージョンが確認できます。
+"next": "^14.2.3",
 ```
 
 
