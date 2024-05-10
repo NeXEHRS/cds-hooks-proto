@@ -1,12 +1,15 @@
 
 
 # CDS サービス cds-hooks-server
+
+> [!CAUTION]
+> 特定の行動のリスクや否定的な結果について助言する。
+
+
 ## cds-hooks-protoにおけるcds-hooks-serverサービスの位置づけ
 下図にcds-hooks-proto全体のイメージを示す。このうちcds-hooks-serverサービスは図中の赤枠で示す部分となる。
 <center><img src="../cds-server-next-docker//docs/img/cds-hook-img2.png" width="70%" ></center> 
 
-> [!CAUTION]
-> 特定の行動のリスクや否定的な結果について助言する。
 
 ## CDS Hooks Serverの開始方法
 
