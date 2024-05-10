@@ -36,3 +36,20 @@ CDS Hookは、ベンダーに依存しないリモート意思決定支援標準
 	- リクエストヘッダ
 	- リクエストボディ
 
+> [!CAUTION]
+>2024-05-10 17:10:23
+> Next.js サーバー アクションでサーバー側リクエスト フォージェリ (SSRF) の脆弱性がセキュリティによって特定されました。
+> 過去にダウンロードさあれた方はNextバージョンを 14.1.1以降にアップデートする事により解消できます。
+
+Nextバージョンアップ方法
+```bash
+※ cds-hooks-proto/cds-server-next-docker/cds-hook-server/へ移動します。
+>cd cds-hooks-proto/cds-server-next-docker/cds-hook-server/
+
+※ 下記のコマンドでアップデートを実行します。これにより最新版へアップグレートされます。
+>npm i next@latest
+
+[確認方法]
+cds-hooks-proto/cds-server-next-docker/cds-hook-server/package.jsonを確認して13行目あたりにあるnextと書かれた行でバージョンが確認できます。
+例："next": "^14.2.3",
+```
