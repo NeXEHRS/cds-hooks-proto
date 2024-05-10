@@ -10,7 +10,7 @@
 Nextバージョンアップ方法
 ```bash
 ※ cds-hooks-proto/cds-server-next-docker/cds-hook-server/へ移動します。
-> cds-hooks-proto/cds-server-next-docker/cds-hook-server/
+>cd cds-hooks-proto/cds-server-next-docker/cds-hook-server/
 
 ※ 下記のコマンドでアップデートを実行します。これにより最新版へアップグレートされます。
 >npm i next@latest
