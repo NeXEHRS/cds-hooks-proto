@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+        input {
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .inline-input {
+            display: flex;
+            align-items: center;
+        }
+        .inline-input input {
+            width: 80px;
+            margin-right: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .summary-box {
+            margin-top: 15px;
+            padding: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+        }
+        .summary-box h3 {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Summary Application</h1>
+        <form id="summaryForm">
+            <div class="form-group">
+                <label for="input-text">要約したい文章を入力してください:</label>
+                <textarea id="input-text" name="input-text" placeholder="Enter the text to summarize" required></textarea>
+            </div>
+            <div class="form-group inline-input">
+                <input type="number" id="summary-length" name="summary-length" placeholder="文字数" min="1">
+                <label for="summary-length">文字で要約</label>
+            </div>
+            <button type="submit">送信</button>
+        </form>
+        <div id="additional-summaries"></div>
+        <div class="form-group">
+            <label for="output-text">要約結果:</label>
+            <textarea id="output-text" readonly style="height: 100px;"></textarea>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("summaryForm").addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const inputText = document.getElementById("input-text").value;
+            let summaryLength = document.getElementById("summary-length").value.trim();
+            const outputText = document.getElementById("output-text");
+            const additionalSummaries = document.getElementById("additional-summaries");
+
+            if (!summaryLength || isNaN(summaryLength)) {
+                summaryLength = 300;
+            } else {
+                summaryLength = parseInt(summaryLength, 10);
+            }
+
+            try {
+                const response = await fetch("/submit", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ 
+                        "input-text": inputText,
+                        "summary-length": summaryLength
+                    })
+                });
+                const data = await response.json();
+                outputText.value = JSON.stringify(data, null, 2);
+
+                additionalSummaries.innerHTML = "";
+                if (data.cards) {
+                    data.cards.forEach(card => {
+                        const summaryBox = document.createElement("div");
+                        summaryBox.classList.add("summary-box");
+
+                        const title = document.createElement("h3");
+                        title.textContent = card.summary;
+
+                        const detailText = document.createElement("textarea");
+                        detailText.value = card.detail;
+                        detailText.readOnly = true;
+                        detailText.style.width = "100%";
+                        detailText.style.height = "80px";
+
+                        summaryBox.appendChild(title);
+                        summaryBox.appendChild(detailText);
+                        additionalSummaries.appendChild(summaryBox);
+                    });
+                }
+            } catch (error) {
+                outputText.value = `エラー: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>
