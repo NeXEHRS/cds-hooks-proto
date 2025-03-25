@@ -12,7 +12,7 @@
 - Command R+ のレスポンスから CDS Cards を生成し、CDS Hooks サーバへ送信
 - PDDI CDS IG により、1リクエスト＝1レスポンスと定められているため、CDS サービスで複数の LLM サービスにリクエストを行い、結果を1つの Cards に各 LLM の結果を Card 配列としてレスポンスするよう実装
 
-<img src="img/usage1.png" width="50%" >
+<img src="img/usage1.png" width="90%" >
 
 ## CDS Hook 設定値
 LLMのAPI仕様を考慮して、CDS Hookの設定値を以下のように定義しました。
@@ -57,18 +57,18 @@ LLMのAPI仕様を考慮して、CDS Cardsの設定値を以下のように定�
 
 ## CDS Hooks サーバの設定
 - 接続先を管理している Prisma（DB）に Service と Cdshost を追加
-- [Prisma Studio 起動方法](https://github.com/NeXEHRS/cds-hooks-proto/blob/main/cds-server-next-docker/docs/extention01.md)
+- [Prisma Studio 起動方法](../cds-server-next-docker/docs/extention01.md)
 
 ## CDS Hooks サーバの設定（Prisma 設定）
 ### サービスの追加
-<img src="img/usage2.png" width="50%" >
+<img src="img/usage2.png" width="90%" >
 
 - クライアントからのエンドポイントを追加、リレー先の CDS サービスを指定
   - 例）CDS Hooks サーバ: `http://localhost:3000`、エンドポイント: `http://localhost:3000/llm-service(hook)/llm-service(id)`
 
 
 ### ホストの追加
-<img src="img/usage3.png" width="50%" >
+<img src="img/usage3.png" width="90%" >
 
   - 例）CDS サービスサーバ: `http://localhost:5000`、エンドポイント: `http://localhost:5000/llm-service(hook)/llm-service(id)`
   - Docker 構築の場合はローカル構築: `http://localhost:18080`
@@ -108,8 +108,8 @@ ChatGPTエラー: Error code: 429 - {'error': {'message': 'You exceeded your cur
 ```
 
 ## CDS Hooks クライアントのセットアップ
-- [CDS Hooks クライアントのセットアップ](https://github.com/NeXEHRS/cds-hooks-proto/blob/main/cds-server-next-docker/docs/extention01.md)
+- [CDS Hooks クライアントのセットアップ](./cds-hooks-client(python版)/README.md)
 
-- [CDS サービスのセットアップ](https://github.com/NeXEHRS/cds-hooks-proto/blob/main/cds-server-next-docker/docs/extention01.md)
+- [CDS サービスのセットアップ](./LLMService/README.md)
 
 <br><br><br>
