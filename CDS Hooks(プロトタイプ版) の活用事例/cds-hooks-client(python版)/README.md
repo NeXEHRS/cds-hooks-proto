@@ -1,4 +1,4 @@
-# cds-hooks-client
+# cds-hooks-client(python版)
 
 このプロジェクトは、CDS Hooksサーバとのやり取りを行う Flask ベースの API サービスです。
 
